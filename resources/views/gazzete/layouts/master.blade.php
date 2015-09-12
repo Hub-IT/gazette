@@ -23,6 +23,8 @@
     <div class="row">
         <section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
             @yield('content')
+
+            @include('gazzete.layouts._footer')
         </section>
     </div>
 </main>

@@ -7,6 +7,9 @@
 ## Developers
 ### Tests
 Gazzete Web App is build the TDD way. We first write functional tests, then integration tests, and where needed unit tests.
+###
+- postgres terminal: psql -U homestead -h localhost # password: secret
+
 
 ### License
 

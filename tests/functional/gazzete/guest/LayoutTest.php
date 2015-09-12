@@ -5,11 +5,10 @@
  */
 
 /**
- * Class homePageTest verifies a guest can view all content pertaining to the home page '/'.
+ * Class LayoutTest verifies a guest can view all content pertaining to the layout of Gazzete page '/'.
  */
 class LayoutTest extends TestCase
 {
-
 	/** @test */
 	public function it_reads_sidebar()
 	{
@@ -35,5 +34,14 @@ class LayoutTest extends TestCase
 			->see('Categories')
 			->see('Tags')
 			->see('Favorites');
+	}
+
+	/** @test */
+	public function it_reads_footer()
+	{
+		$this->visit(route('home'))
+			->seePageIs(route('home'))
+			->see('About')
+			->see('Writer 2015');
 	}
 }
