@@ -1,0 +1,9 @@
+# Laravel
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+
+# PHPStorm
+/.idea
