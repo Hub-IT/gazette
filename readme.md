@@ -1,7 +1,7 @@
 ## Gazzete Web App
 
 ## Installation
-- Bower. Install front-end libraries.
+- BowerPHP
 - Composer. Install back-end libraries.
 
 ## Developers
