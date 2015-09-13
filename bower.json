@@ -6,7 +6,8 @@
     "fastclick": "~1.0.6",
     "fontawesome": "~4.3.0",
     "html5shiv": "~3.7.2",
+    "jpanelmenu": "~1.4.1",
     "jquery": "~2.1.4",
-    "jpanelmenu": "~1.4.1"
+    "jquery-during-scroll": "~1.1.0"
   }
 }
