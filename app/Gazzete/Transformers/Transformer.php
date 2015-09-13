@@ -29,8 +29,8 @@ abstract class Transformer
 	}
 
 	/**
-	 * @param $item
+	 * @param $post
 	 * @return mixed
 	 */
-	public abstract function transform($item);
+	public abstract function transform($post);
 }

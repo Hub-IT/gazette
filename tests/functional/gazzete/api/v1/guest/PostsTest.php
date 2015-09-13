@@ -21,16 +21,36 @@ class PostsTest extends TestCase
 			->seeJsonEquals([
 				'posts'     => [
 					[
+						'id'           => $posts[0]->id,
 						'title'        => $posts[0]->title,
 						'summary'      => $posts[0]->summary,
 						'content'      => $posts[0]->content,
 						'minutes_read' => $posts[0]->minutes_read,
+						'author'       => [
+							'id'     => $posts[0]->author->id,
+							'name'   => $posts[0]->author->name,
+							'avatar' => $posts[0]->author->avatar,
+						],
+						'category'     => [
+							'id'     => $posts[0]->category->id,
+							'name'   => $posts[0]->category->name,
+						],
 					],
 					[
+						'id'           => $posts[1]->id,
 						'title'        => $posts[1]->title,
 						'summary'      => $posts[1]->summary,
 						'content'      => $posts[1]->content,
 						'minutes_read' => $posts[1]->minutes_read,
+						'author'       => [
+							'id'     => $posts[1]->author->id,
+							'name'   => $posts[1]->author->name,
+							'avatar' => $posts[1]->author->avatar,
+						],
+						'category'     => [
+							'id'   => $posts[1]->category->id,
+							'name' => $posts[1]->category->name,
+						],
 					],
 				],
 				'paginator' => [

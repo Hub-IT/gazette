@@ -10,16 +10,26 @@ class PostTransformer extends Transformer
 {
 
 	/**
-	 * @param $item
+	 * @param $post
 	 * @return mixed
 	 */
-	public function transform($item)
+	public function transform($post)
 	{
 		return [
-			'title'        => $item->title,
-			'summary'      => $item->summary,
-			'content'      => $item->content,
-			'minutes_read' => $item->minutes_read,
+			'id'           => $post->id,
+			'title'        => $post->title,
+			'summary'      => $post->summary,
+			'content'      => $post->content,
+			'minutes_read' => $post->minutes_read,
+			'author'       => [
+				'id'     => $post->author->id,
+				'name'   => $post->author->name,
+				'avatar' => $post->author->avatar,
+			],
+			'category'     => [
+				'id'   => $post->category->id,
+				'name' => $post->category->name,
+			],
 		];
 	}
 }
