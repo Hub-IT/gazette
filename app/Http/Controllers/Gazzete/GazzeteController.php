@@ -35,11 +35,6 @@ class GazzeteController extends Controller
 	{
 		$posts = $this->postRepository->getLatest();
 
-		$post = (Post::first()->get());
-
-		dd($post->get(0)->author()->get());
-		dd($posts->get(0)->author);
-
 		return view('gazzete.home', compact('posts'));
 	}
 }

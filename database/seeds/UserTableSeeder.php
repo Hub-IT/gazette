@@ -12,8 +12,11 @@ class UserTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$author = factory(App\Gazzete\User::class)->create();
+		$authors = factory(App\Gazzete\User::class, rand(2, 10))->create();
 
-		$author->assignRole(Role::author());
+		foreach ($authors as $author)
+		{
+			$author->assignRole(Role::author());
+		}
 	}
 }

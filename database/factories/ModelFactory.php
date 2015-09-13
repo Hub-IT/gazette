@@ -37,11 +37,11 @@ $factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 
 	return [
 		'title'        => $faker->name,
-		'subtitle'     => $faker->name,
+		'summary'      => $faker->paragraphs(1, true),
 		'content'      => $faker->paragraphs(3, true),
+		'minutes_read' => $faker->numberBetween(1, 100),
 		'category_id'  => $category->id,
 		'author_id'    => $author->id,
-		'minutes_read' => $faker->numberBetween(1, 100),
 	];
 });
 

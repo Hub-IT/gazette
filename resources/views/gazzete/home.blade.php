@@ -14,14 +14,14 @@
                 <div class="post-preview col-xs-10  no-gutter">
                     <h2><a href="{!! route('posts.show', $post) !!}">{!! $post->title !!}</a></h2>
 
-                    <p> {!! $post->subtitle !!}</p>
+                    <p> {!! $post->summary !!}</p>
 
-                    {{--<p class="meta">--}}
-                        {{--<a href="{!! route('authors.show', $post->author) !!}"> {!! $post->author->name !!}</a> in <a--}}
-                                {{--href="{!! route('categories.show', $post->category) !!}">{!! $post->category->name !!}</a>--}}
-                        {{--<i class="link-spacer"></i> <i class="fa fa-bookmark"></i> {!! $post->minutes_read !!}--}}
-                    {{--</p>--}}
-                {{--</div>--}}
+                    <p class="meta">
+                        <a href="{!! route('authors.show', $post->author) !!}"> {!! $post->author->name !!}</a> in <a
+                                href="{!! route('categories.show', $post->category) !!}">{!! $post->category->name !!}</a>
+                        <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> {!! $post->minutes_read !!}
+                    </p>
+                </div>
 
                 <div class=" col-xs-2  no-gutter">
                     <img src="{!! $post->author->avatar !!}" class="user-icon" alt="user-image">

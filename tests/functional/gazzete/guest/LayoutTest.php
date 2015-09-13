@@ -3,12 +3,15 @@
  * @author Rizart Dokollari <r.dokollari@gmail.com>
  * @since 12/10/2015
  */
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * Class LayoutTest verifies a guest can view all content pertaining to the layout of Gazzete page '/'.
  */
 class LayoutTest extends TestCase
 {
+	use DatabaseMigrations;
+
 	/** @test */
 	public function it_reads_sidebar()
 	{

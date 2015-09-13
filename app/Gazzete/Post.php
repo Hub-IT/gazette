@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	protected $fillable = ['title', 'subtitle', 'content'];
+	protected $fillable = ['title', 'summary', 'content', 'minutes_read'];
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

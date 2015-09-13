@@ -13,13 +13,16 @@ class PostTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$author = User::with(['roles' => function ($query)
+		$authors = User::with(['roles' => function ($query)
 		{
 			$query->where('name', '=', Role::AUTHOR);
-		}])->first();
+		}])->get();
 
-		$post = factory(App\Gazzete\Post::class)->create();
+		$posts = factory(App\Gazzete\Post::class, 15)->create();
 
-		$post->assignAuthor($author);
+		foreach ($posts as $post)
+		{
+			$post->assignAuthor($authors->random());
+		}
 	}
 }
