@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker)
+$factory->define(App\Gazzete\User::class, function (Faker\Generator $faker)
 {
 	return [
 		'name'           => $faker->name,
@@ -22,18 +22,18 @@ $factory->define(App\User::class, function (Faker\Generator $faker)
 	];
 });
 
-$factory->define(App\Role::class, function (Faker\Generator $faker)
+$factory->define(App\Gazzete\Role::class, function (Faker\Generator $faker)
 {
 	return [
 		'name' => $faker->name,
 	];
 });
 
-$factory->define(App\Post::class, function ($faker) use ($factory)
+$factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 {
-	$category = factory(App\Category::class)->create();
-	$author = factory(App\User::class)->create();
-	$author->assignRole(App\Role::author());
+	$category = factory(App\Gazzete\Category::class)->create();
+	$author = factory(App\Gazzete\User::class)->create();
+	$author->assignRole(App\Gazzete\Role::author());
 
 	return [
 		'title'       => $faker->name,
@@ -44,7 +44,7 @@ $factory->define(App\Post::class, function ($faker) use ($factory)
 	];
 });
 
-$factory->define(App\Category::class, function (Faker\Generator $faker)
+$factory->define(App\Gazzete\Category::class, function (Faker\Generator $faker)
 {
 	return [
 		'name' => $faker->name,

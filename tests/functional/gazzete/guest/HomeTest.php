@@ -15,7 +15,7 @@ class HomeTest extends TestCase
 	/** @test */
 	public function it_reads_posts()
 	{
-		$posts = factory(App\Post::class, 2)->create();
+		$posts = factory(App\Gazzete\Post::class, 2)->create();
 
 		$this->visit(route('home'))
 			->seePageIs(route('home'))

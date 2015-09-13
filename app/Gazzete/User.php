@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Gazzete;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -44,6 +44,6 @@ class User extends Model implements AuthenticatableContract,
 
 	public function roles()
 	{
-		return $this->belongsToMany('App\Role')->withTimestamps();
+		return $this->belongsToMany('App\Gazzete\Role')->withTimestamps();
 	}
 }
