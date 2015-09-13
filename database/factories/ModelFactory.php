@@ -36,11 +36,12 @@ $factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 	$author->assignRole(App\Gazzete\Role::author());
 
 	return [
-		'title'       => $faker->name,
-		'subtitle'    => $faker->name,
-		'content'     => $faker->paragraphs(3, true),
-		'category_id' => $category->id,
-		'user_id'     => $author->id,
+		'title'        => $faker->name,
+		'subtitle'     => $faker->name,
+		'content'      => $faker->paragraphs(3, true),
+		'category_id'  => $category->id,
+		'author_id'    => $author->id,
+		'minutes_read' => $faker->numberBetween(1, 100),
 	];
 });
 

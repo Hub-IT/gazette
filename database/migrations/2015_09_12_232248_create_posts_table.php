@@ -22,8 +22,8 @@ class CreatePostsTable extends Migration
 			$table->longText('content');
 			$table->timestamps();
 
-			$table->integer('user_id')->unsigned()->index();
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+			$table->integer('author_id')->unsigned()->index();
+			$table->foreign('author_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
 		});
 	}
 

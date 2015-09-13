@@ -6,6 +6,7 @@
 
 namespace App\Http\Controllers\Gazzete;
 
+use App\Gazzete\Post;
 use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -34,7 +35,11 @@ class GazzeteController extends Controller
 	{
 		$posts = $this->postRepository->getLatest();
 
-		dd($posts->get(0)->author()->name);
+		$post = (Post::first()->get());
+
+		dd($post->get(0)->author()->get());
+		dd($posts->get(0)->author);
+
 		return view('gazzete.home', compact('posts'));
 	}
 }

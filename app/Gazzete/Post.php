@@ -18,7 +18,7 @@ class Post extends Model
 
 	public function assignAuthor($author)
 	{
-		$this->author()->associate($author);
+		$this->author()->associate($author)->save();
 	}
 
 	/**

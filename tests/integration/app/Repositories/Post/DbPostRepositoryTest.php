@@ -1,4 +1,5 @@
 <?php
+use App\Gazzete\Post;
 use App\Gazzete\Repositories\Post\DbPostRepository;
 use App\Gazzete\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -30,7 +31,7 @@ class DbPostRepositoryTest extends \TestCase
 
 		$this->assertCount(2, $actualLatestPosts);
 		$this->assertCount(3, $this->dbPostRepository->all());
-		$this->assertEquals($expectedLatestPosts[0]->title, $actualLatestPosts->get(0)->title);
+		$this->assertEquals($expectedLatestPosts[0], $actualLatestPosts->get(0));
 		$this->assertEquals($expectedLatestPosts[1]->title, $actualLatestPosts->get(1)->title);
 	}
 
@@ -41,12 +42,14 @@ class DbPostRepositoryTest extends \TestCase
 		$author = factory(App\Gazzete\User::class)->create();
 		$author->assignRole(Role::author());
 
-		$this->assertNull($post->author);
 
+		$actualPost = Post::find($post->id);
 		$post->assignAuthor($author);
+		$this->assertNotEquals($post->author, $actualPost->author);
 
-		$this->assertNotNull($post->author);
-		$this->assertEquals($author->id, $post->author->id);
+		$actualPost = Post::find($post->id);
+		$this->assertNotNull($actualPost->author);
+		$this->assertEquals($author->id, $actualPost->author->id);
 	}
 
 }
