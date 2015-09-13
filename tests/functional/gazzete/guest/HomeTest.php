@@ -33,18 +33,4 @@ class HomeTest extends TestCase
 			->see($posts[1]->category->name)
 			->see($posts[1]->minutes_read);
 	}
-
-	/** @test */
-	public function it_reads_panel_menu()
-	{
-		$this->visit(route('home'))
-			->see('Home')
-			->see('Contributors')
-			->see('About')
-			->see('Contact')
-			->see('Articles')
-			->see('Categories')
-			->see('Tags')
-			->see('Favorites');
-	}
 }

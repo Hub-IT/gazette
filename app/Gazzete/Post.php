@@ -11,16 +11,21 @@ class Post extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function author()
+	public function category()
 	{
-		return $this->belongsTo('App\Gazzete\User');
+		return $this->belongsTo('App\Gazzete\Category');
+	}
+
+	public function assignAuthor($author)
+	{
+		$this->author()->associate($author);
 	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function category()
+	public function author()
 	{
-		return $this->belongsTo('App\Gazzete\Category');
+		return $this->belongsTo('App\Gazzete\User');
 	}
 }

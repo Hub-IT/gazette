@@ -30,6 +30,7 @@ class DbPostRepository extends DbRepository implements PostRepository
 	{
 		$total = ($total > 0 && $total <= 100) ? $total : 10;
 
-		return Post::orderBy('created_at')->take($total)->get();
+		return Post::with('author', 'category')
+			->orderBy('created_at')->take($total)->get();
 	}
 }

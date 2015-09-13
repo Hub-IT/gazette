@@ -2,6 +2,6 @@
 
 get('/', ['as' => 'home', 'uses' => 'Gazzete\GazzeteController@home']);
 
-Route::resource('posts', 'Gazzetee\PostsController', ['only' => '']);
-Route::resource('authors', 'Gazzetee\AuthorsController', ['only' => '']);
-Route::resource('categories', 'Gazzetee\CategoriesController', ['only' => '']);
+Route::resource('posts', 'Gazzete\PostsController', ['only' => 'show']);
+Route::resource('authors', 'Gazzete\AuthorsController', ['only' => 'show']);
+Route::resource('categories', 'Gazzete\CategoriesController', ['only' => 'show']);

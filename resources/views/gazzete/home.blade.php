@@ -12,16 +12,16 @@
         @forelse ($posts as $post)
             <article class="post">
                 <div class="post-preview col-xs-10  no-gutter">
-                    <h2><a href="{!! route('posts', $post) !!}">{!! $post->title !!}</a></h2>
+                    <h2><a href="{!! route('posts.show', $post) !!}">{!! $post->title !!}</a></h2>
 
                     <p> {!! $post->subtitle !!}</p>
 
-                    <p class="meta">
-                        <a href="{!! route('authors', $post->author) !!}"> {!! $post->author->name !!}</a> in <a
-                                href="{!! route('categories', $post->category) !!}">{!! $post->category->name !!}</a>
-                        <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> {!! $post->minutes_read !!}
-                    </p>
-                </div>
+                    {{--<p class="meta">--}}
+                        {{--<a href="{!! route('authors.show', $post->author) !!}"> {!! $post->author->name !!}</a> in <a--}}
+                                {{--href="{!! route('categories.show', $post->category) !!}">{!! $post->category->name !!}</a>--}}
+                        {{--<i class="link-spacer"></i> <i class="fa fa-bookmark"></i> {!! $post->minutes_read !!}--}}
+                    {{--</p>--}}
+                {{--</div>--}}
 
                 <div class=" col-xs-2  no-gutter">
                     <img src="{!! $post->author->avatar !!}" class="user-icon" alt="user-image">
@@ -36,14 +36,14 @@
         <div class="category row">
             <section>
 
-                {% for category in categories %}
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>{{ category.getName }}</h2>
-                    <a href="category.html"><img src="{{ category.getExtImg }}" alt="category-image"></a>
-                </div>
-                {% else %}
-                <h2>No categories!</h2>
-                {% endfor %}
+                {{--{% for category in categories %}--}}
+                {{--<div class="category-preview col-xs-6 col-sm-4 ">--}}
+                    {{--<h2>{{ category.getName }}</h2>--}}
+                    {{--<a href="category.html"><img src="{{ category.getExtImg }}" alt="category-image"></a>--}}
+                {{--</div>--}}
+                {{--{% else %}--}}
+                {{--<h2>No categories!</h2>--}}
+                {{--{% endfor %}--}}
 
             </section>
         </div>

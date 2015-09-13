@@ -6,6 +6,7 @@
 
 namespace App\Http\Controllers\Gazzete;
 
+use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Response;
@@ -17,6 +18,13 @@ use Illuminate\Http\Response;
  */
 class GazzeteController extends Controller
 {
+	protected $postRepository;
+
+	public function __construct(PostRepository $postRepository)
+	{
+		$this->postRepository = $postRepository;
+	}
+
 	/**
 	 * Display home page.
 	 *
@@ -24,6 +32,9 @@ class GazzeteController extends Controller
 	 */
 	public function home()
 	{
-		return view('gazzete.home');
+		$posts = $this->postRepository->getLatest();
+
+		dd($posts->get(0)->author()->name);
+		return view('gazzete.home', compact('posts'));
 	}
 }

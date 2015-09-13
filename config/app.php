@@ -150,6 +150,10 @@ return [
 		 */
 		Collective\Html\HtmlServiceProvider::class,
 
+		/*
+		 * Internal Service Providers
+		 */
+		App\Providers\BackendServiceProvider::class,
 	],
 
 	/*
