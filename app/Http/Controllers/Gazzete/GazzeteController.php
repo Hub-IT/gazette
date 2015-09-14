@@ -35,6 +35,8 @@ class GazzeteController extends Controller
 	{
 		$posts = $this->postRepository->getLatest();
 
+		$categories = $this->postRepository->getCategories();
+
 		return view('gazzete.home', compact('posts'));
 	}
 }

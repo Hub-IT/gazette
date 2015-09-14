@@ -33,4 +33,14 @@ class DbPostRepository extends DbRepository implements PostRepository
 		return Post::with('author', 'category')
 			->orderBy('created_at')->take($total)->get();
 	}
+
+	/**
+	 * Return all categories of posts.
+	 *
+	 * @return mixed
+	 */
+	public function getCategories()
+	{
+
+	}
 }

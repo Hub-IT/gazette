@@ -32,8 +32,8 @@ class PostsTest extends TestCase
 							'avatar' => $posts[0]->author->avatar,
 						],
 						'category'     => [
-							'id'     => $posts[0]->category->id,
-							'name'   => $posts[0]->category->name,
+							'id'   => $posts[0]->category->id,
+							'name' => $posts[0]->category->name,
 						],
 					],
 					[

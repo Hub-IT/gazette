@@ -15,7 +15,7 @@ class HomeTest extends TestCase
 	/** @test */
 	public function it_reads_posts()
 	{
-		$posts = factory(App\Gazzete\Post::class, 2)->create();
+		$posts = factory(App\Gazzete\Post::class, 11)->create();
 
 		$this->visit(route('home'))
 			->seePageIs(route('home'))
@@ -26,11 +26,35 @@ class HomeTest extends TestCase
 			->see($posts[0]->author->name)
 			->see($posts[0]->category->name)
 			->see($posts[0]->minutes_read)
-			->see($posts[1]->title)
-			->see($posts[1]->subtitle)
-			->see($posts[1]->author->avatar)
-			->see($posts[1]->author->name)
-			->see($posts[1]->category->name)
-			->see($posts[1]->minutes_read);
+			->see($posts[9]->title)
+			->see($posts[9]->subtitle)
+			->see($posts[9]->author->avatar)
+			->see($posts[9]->author->name)
+			->see($posts[9]->category->name)
+			->see($posts[9]->minutes_read)
+			->dontSee($posts[10]->title);
+	}
+
+	/** @test */
+	public function it_reads_categories()
+	{
+		$categories = factory(App\Gazzete\Category::class, 3)->create();
+
+		$this->visit(route('home'))
+			->seePageIs(route('home'))
+			->see('POSTS')
+			->see('CATEGORIES')
+			->click('categories-tab')
+			->see($categories[0]->name)
+			->see($categories[1]->name)
+			->see($categories[2]->name);
 	}
 }
+
+
+
+
+
+
+
+

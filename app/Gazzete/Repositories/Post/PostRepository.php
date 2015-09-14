@@ -24,4 +24,5 @@ interface PostRepository
 	 * @return mixed
 	 */
 	public function getLatest($total = 10);
+
 }

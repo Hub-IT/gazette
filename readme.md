@@ -10,6 +10,9 @@ Gazzete Web App is build the TDD way. We first write functional tests, then inte
 ###
 - postgres terminal: psql -U homestead -h localhost # password: secret
 - create gazzete_testing database
+#### TODO
+- Use selenium for front-end testing:
+	- Verify a user request more posts (Home page view)
 
 
 ### License

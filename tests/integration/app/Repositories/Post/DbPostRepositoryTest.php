@@ -1,5 +1,6 @@
 <?php
 use App\Gazzete\Post;
+use App\Gazzete\Repositories\Category\DbCategoryRepository;
 use App\Gazzete\Repositories\Post\DbPostRepository;
 use App\Gazzete\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -13,12 +14,15 @@ class DbPostRepositoryTest extends \TestCase
 	use DatabaseMigrations;
 
 	protected $dbPostRepository;
+	protected $dbCategoryRepository;
 
 	public function setUp()
 	{
 		parent::setUp();
 
 		$this->dbPostRepository = new DbPostRepository();
+
+		$this->dbCategoryRepository = new DbCategoryRepository();
 	}
 
 	/** @test */
@@ -58,6 +62,20 @@ class DbPostRepositoryTest extends \TestCase
 		$actualPost = Post::find($post->id);
 		$this->assertNotNull($actualPost->author);
 		$this->assertEquals($author->id, $actualPost->author->id);
+	}
+
+	/** @test */
+	public function it_returns_all_categories()
+	{
+		$expectedCategories = factory(App\Gazzete\Category::class, 2)->create();
+
+		$actualCategories = $this->dbCategoryRepository->all();
+
+		$this->assertCount(2, $actualCategories);
+		$this->assertEquals($expectedCategories[0]->id, $actualCategories->get(0)->id);
+		$this->assertEquals($expectedCategories[0]->name, $actualCategories->get(0)->name);
+		$this->assertEquals($expectedCategories[1]->id, $actualCategories->get(1)->id);
+		$this->assertEquals($expectedCategories[1]->name, $actualCategories->get(1)->name);
 	}
 
 }
