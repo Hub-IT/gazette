@@ -18,7 +18,7 @@ $factory->define(App\Gazzete\User::class, function (Faker\Generator $faker)
 		'email'          => $faker->email,
 		'password'       => bcrypt(str_random(10)),
 		'remember_token' => str_random(10),
-		'avatar'         => $faker->imageUrl(),
+		'avatar'         => $faker->imageUrl(50, 50),
 	];
 });
 
@@ -48,6 +48,7 @@ $factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 $factory->define(App\Gazzete\Category::class, function (Faker\Generator $faker)
 {
 	return [
-		'name' => $faker->name,
+		'name'   => $faker->name,
+		'avatar' => $faker->imageUrl(178, 298),
 	];
 });

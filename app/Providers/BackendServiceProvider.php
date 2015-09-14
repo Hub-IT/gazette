@@ -23,7 +23,10 @@ class BackendServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->app->bind(
-			'App\Gazzete\Repositories\Post\PostRepository', 'App\Gazzete\Repositories\Post\DbPostRepository');
+		$this->app->bind('App\Gazzete\Repositories\Post\PostRepository',
+			'App\Gazzete\Repositories\Post\DbPostRepository');
+
+		$this->app->bind('App\Gazzete\Repositories\Category\CategoryRepository',
+			'App\Gazzete\Repositories\Category\DbCategoryRepository');
 	}
 }

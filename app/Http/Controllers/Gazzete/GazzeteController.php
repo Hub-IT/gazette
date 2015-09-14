@@ -6,7 +6,7 @@
 
 namespace App\Http\Controllers\Gazzete;
 
-use App\Gazzete\Post;
+use App\Gazzete\Repositories\Category\CategoryRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -20,10 +20,13 @@ use Illuminate\Http\Response;
 class GazzeteController extends Controller
 {
 	protected $postRepository;
+	protected $categoryRepository;
 
-	public function __construct(PostRepository $postRepository)
+	public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
 	{
 		$this->postRepository = $postRepository;
+
+		$this->categoryRepository = $categoryRepository;
 	}
 
 	/**
@@ -35,8 +38,8 @@ class GazzeteController extends Controller
 	{
 		$posts = $this->postRepository->getLatest();
 
-		$categories = $this->postRepository->getCategories();
+		$categories = $this->categoryRepository->all();
 
-		return view('gazzete.home', compact('posts'));
+		return view('gazzete.home', compact('posts', 'categories'));
 	}
 }
