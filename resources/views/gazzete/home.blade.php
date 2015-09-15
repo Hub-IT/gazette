@@ -4,7 +4,7 @@
 @section('content')
 <main class="container left-container">
 
-    @include('gazzete.layouts.master._sidebar')
+    @include('gazzete.home._sidebar')
 
     <div class="row">
 
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            @include('gazzete.layouts.master._footer')
+            @include('gazzete.home._footer')
 
         </section>
     </div>

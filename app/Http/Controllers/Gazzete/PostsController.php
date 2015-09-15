@@ -17,13 +17,11 @@ class PostsController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param $slug
+	 * @param $post
 	 * @return Response
 	 */
-	public function show($slug = '')
+	public function show($post)
 	{
-		$post = factory(\App\Gazzete\Post::class)->create();
-
 		$latestPosts = $this->postRepository->getLatest(6);
 
 		return view("gazzete.posts.show", compact('post', 'latestPosts'));

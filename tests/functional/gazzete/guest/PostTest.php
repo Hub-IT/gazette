@@ -8,23 +8,26 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 /**
  * Class ArticleTest verifies a guest can view all content pertaining to an article.
  */
-class ArticleTest extends TestCase
+class PostTest extends TestCase
 {
 	use DatabaseMigrations;
 
 	/** @test */
-	public function it_reads_posts()
+	public function it_reads_post()
 	{
 		$post = factory(App\Gazzete\Post::class)->create();
 
-		$this->visit(route('posts', $post->slug))
-			->seePageIs(route('posts', $post->slug))->see('POSTS')
-			->see($post->title)
-			->see($post->subtitle)
-			->see($post->author->avatar)
+		$this->visit(route('posts.show', $post->slug))
+			->seePageIs(route('posts.show', $post->slug))->see('POSTS')
+			->see('<title>' . $post->title . ' &middot; Gazzete</title>')
 			->see($post->author->name)
 			->see($post->category->name)
-			->see($post->minutes_read);
+			->see($post->minutes_read)
+			->see($post->title)
+			->see($post->subtitle)
+			->see($post->content)
+			->see($post->create_at)
+			->see('SHARE THIS ARTICLE');
 	}
 
 	/** @test */

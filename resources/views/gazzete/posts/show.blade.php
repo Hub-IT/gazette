@@ -66,10 +66,6 @@
                                 data-message="{{ $post->title }}, {!! route('posts.show', $post->slug)!!}" >
                             <i class="fa fa-twitter"></i></a>
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-                        <a class="social-icon" href="#" data-platform="facebook" data-message="Message about this post" data-url="http://writertheme.com/post"><i class="fa fa-facebook-official"></i></a>
-
-                        <a class="social-icon" data-platform="mail" href="mailto:support@writertheme.com"><i class="fa fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
