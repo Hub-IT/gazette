@@ -1,15 +1,15 @@
 {
-  "name": "Gazzete",
-  "dependencies": {
-    "Ionicons": "ionicons#~2.0.1",
-    "admin-lte": "~2.1.1",
-    "bootstrap": "~3.3.5",
-    "fastclick": "~1.0.6",
-    "fontawesome": "~4.4.0",
-    "html5shiv": "~3.7.3",
-    "jpanelmenu": "~1.4.1",
-    "jquery": "~2.1.4",
-    "jquery-during-scroll": "~1.1.0",
-    "respond": "~1.4.2"
-  }
+	"name": "Gazzete",
+	"dependencies": {
+		"ionicons": "~2.0.1",
+		"admin-lte": "~2.1.1",
+		"bootstrap": "~3.3.5",
+		"fastclick": "~1.0.6",
+		"fontawesome": "~4.4.0",
+		"html5shiv": "~3.7.3",
+		"jpanelmenu": "~1.4.1",
+		"jquery": "~2.1.4",
+		"jquery-during-scroll": "~1.1.0",
+		"respond": "~1.4.2"
+	}
 }
