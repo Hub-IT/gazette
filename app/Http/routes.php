@@ -14,3 +14,8 @@ Route::group(['prefix' => 'api'], function ()
 		Route::resource('posts', 'Api\v1\PostsController', ['only' => ['index']]);
 	});
 });
+
+Route::group(['prefix' => 'management'], function ()
+{
+	get('dashboard', ['as' => 'management.dashboard.home', 'uses' => 'Management\DashboardController@home']);
+});

@@ -19,4 +19,12 @@ class Role extends Model
 	{
 		return Role::where('name', '=', Role::AUTHOR)->first();
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public static function administrator()
+	{
+		return Role::where('name', '=', Role::ADMINISTRATOR)->first();
+	}
 }

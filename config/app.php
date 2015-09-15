@@ -154,6 +154,7 @@ return [
 		 * Internal Service Providers
 		 */
 		App\Providers\BackendServiceProvider::class,
+		App\Providers\ComposerServiceProvider::class,
 	],
 
 	/*

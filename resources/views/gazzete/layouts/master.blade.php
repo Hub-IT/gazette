@@ -15,7 +15,7 @@
     <link href='{!! url('gazzete/css/main.css') !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url('gazzete/css/app.css') !!}' rel='stylesheet' type='text/css'/>
 
-    <!--[if lt IE 9]>{!! url('html5shiv/dist/html5shiv.min.js') !!}<![endif]-->
+    <!--[if lt IE 9]><script src='{!! url('vendor/html5shiv/dist/html5shiv.min.js') !!}'></script><![endif]-->
     <script src='{!! url("gazzete/js/modernizr.custom.32229-2.8-respondjs-1-4-2.js") !!}'></script>
 </head>
 

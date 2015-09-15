@@ -25,9 +25,9 @@
             @empty
                 <h2>No posts!</h2>
             @endforelse
-        <div class="row hidden-sm hidden-xs">
-            <button id="btn-more-posts" class="btn btn-primary btn-block"><i class="fa fa-road"></i> More</button>
-        </div>
+    </div>
+    <div class="row hidden-sm hidden-xs">
+        <button id="btn-more-posts" class="btn btn-primary btn-block"><i class="fa fa-road"></i> More</button>
     </div>
 
     <div class="home-page-categories animated fadeIn hide">
@@ -105,12 +105,7 @@
                     url: url + "?page=" + pageNumber + "&limit=10",
                     success: function (data) {
                         pageNumber++;
-                        if (data.length == 0) {
-                            console.log('no posts');
-                        } else {
-                            renderPosts(data);
-                        }
-                    }, error: function (data) {
+                        if (data.length != 0) renderPosts(data);
                     }
                 });
             }
