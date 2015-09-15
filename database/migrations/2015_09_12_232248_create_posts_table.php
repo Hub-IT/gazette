@@ -20,6 +20,8 @@ class CreatePostsTable extends Migration
 			$table->mediumText('summary')->nullable();
 			$table->integer('minutes_read')->nullable();
 			$table->longText('content');
+			$table->string('slug')->unique();
+			$table->string('avatar');
 			$table->timestamps();
 
 			$table->integer('author_id')->unsigned()->index();

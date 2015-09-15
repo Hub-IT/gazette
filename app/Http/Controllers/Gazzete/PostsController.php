@@ -1,85 +1,31 @@
 <?php
 namespace App\Http\Controllers\Gazzete;
 
+use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+	protected $postRepository;
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function __construct(PostRepository $postRepository)
 	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  Request $request
-	 * @return Response
-	 */
-	public function store(Request $request)
-	{
-		//
+		$this->postRepository = $postRepository;
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int $id
+	 * @param $slug
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug = '')
 	{
-		//
-	}
+		$post = factory(\App\Gazzete\Post::class)->create();
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+		$latestPosts = $this->postRepository->getLatest(6);
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  Request $request
-	 * @param  int $id
-	 * @return Response
-	 */
-	public function update(Request $request, $id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return view("gazzete.posts.show", compact('post', 'latestPosts'));
 	}
 }

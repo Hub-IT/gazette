@@ -2,48 +2,67 @@
 @section('title', 'Home')
 @section('styles') @endsection
 @section('content')
-    <div class="sub-nav">
-        <a href="#" class="select-posts active">Posts</a>
-        <a href="#" id="categories-tab" class="select-categories">Categories</a>
-    </div>
-    <div class="home-page-posts animated fadeIn" id="posts">
-            @forelse ($posts as $post)
-                <article class="post">
-                    <div class="post-preview col-xs-10 no-gutter">
-                        <h2><a href="{!! route('posts.show', $post) !!}">{{ $post->title }}</a></h2>
-                        <p> {{ $post->summary }}</p>
-                        <p class="meta">
-                            <a href="{!! route('authors.show', $post->author) !!}"> {{ $post->author->name }}</a> in
-                            <a href="{!! route('categories.show', $post->category) !!}">{{ $post->category->name }}</a>
-                            <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> {{ $post->minutes_read }}
-                        </p>
-                    </div>
-                    <div class="col-xs-2  no-gutter">
-                        <img src="{!! $post->author->avatar !!}" class="user-icon" alt="user-image">
-                    </div>
-                </article>
-            @empty
-                <h2>No posts!</h2>
-            @endforelse
-    </div>
-    <div class="row hidden-sm hidden-xs">
-        <button id="btn-more-posts" class="btn btn-primary btn-block"><i class="fa fa-road"></i> More</button>
-    </div>
+<main class="container left-container">
 
-    <div class="home-page-categories animated fadeIn hide">
-        <div class="category row">
-            <section>
-                @forelse ($categories as $category)
-                    <div class="category-preview col-xs-6 col-sm-4">
-                        <h2>{{ $category->name }}</h2>
-                        <a href="{!! route('categories.show', $category) !!}"><img src="{!! $category->avatar !!}" alt="category-image"></a>
-                    </div>
+    @include('gazzete.layouts.master._sidebar')
+
+    <div class="row">
+
+        <section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+
+            <div class="sub-nav">
+                <a href="#" class="select-posts active">Posts</a>
+                <a href="#" id="categories-tab" class="select-categories">Categories</a>
+            </div>
+
+            <div class="home-page-posts animated fadeIn" id="posts">
+                @forelse ($posts as $post)
+                    <article class="post">
+                        <div class="post-preview col-xs-10 no-gutter">
+                            <h2><a href="{!! route('posts.show', $post->slug) !!}">{{ $post->title }}</a></h2>
+
+                            <p> {{ $post->summary }}</p>
+
+                            <p class="meta">
+                                <a href="{!! route('authors.show', $post->author) !!}"> {{ $post->author->name }}</a> in
+                                <a href="{!! route('categories.show', $post->category) !!}">{{ $post->category->name }}</a>
+                                <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> {{ $post->minutes_read }}
+                            </p>
+                        </div>
+                        <div class="col-xs-2  no-gutter">
+                            <img src="{!! $post->author->avatar !!}" class="user-icon" alt="user-image">
+                        </div>
+                    </article>
                 @empty
-                    <h2>No categories!</h2>
+                    <h2>No posts!</h2>
                 @endforelse
-            </section>
-        </div>
+            </div>
+
+            <div class="row hidden-sm hidden-xs">
+                <button id="btn-more-posts" class="btn btn-primary btn-block"><i class="fa fa-road"></i> More
+                </button>
+            </div>
+
+            <div class="home-page-categories animated fadeIn hide">
+                <div class="category row">
+                    <section>
+                        @forelse ($categories as $category)
+                            <div class="category-preview col-xs-6 col-sm-4">
+                                <h2>{{ $category->name }}</h2>
+                                <a href="{!! route('categories.show', $category) !!}"><img src="{!! $category->avatar !!}" alt="category-image"></a>
+                            </div>
+                        @empty
+                            <h2>No categories!</h2>
+                        @endforelse
+                    </section>
+                </div>
+            </div>
+
+            @include('gazzete.layouts.master._footer')
+
+        </section>
     </div>
+</main>
 @endsection
 @section('scripts')
 @endsection
