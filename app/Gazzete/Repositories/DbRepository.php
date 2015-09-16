@@ -46,4 +46,15 @@ abstract class DbRepository
 	{
 		return $this->model->save();
 	}
+
+	/**
+	 * @param mixed $model
+	 * @return DbRepository
+	 */
+	public function setModel($model)
+	{
+		$this->model = $model;
+
+		return $this;
+	}
 }

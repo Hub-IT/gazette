@@ -72,8 +72,17 @@ class GazzeteController extends Controller
 		return view('gazzete.contact', compact('contact'));
 	}
 
-	public function postContact(Requests\PostContactRequest $request)
+	/**
+	 * @param Requests\PostContactRequest $request
+	 * @param Contact $contact
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function postContact(Requests\PostContactRequest $request, Contact $contact)
 	{
+		$this->contactRepository->save($contact);
 
+		Flash::success("Contact request is send.");
+
+		return redirect()->back();
 	}
 }
