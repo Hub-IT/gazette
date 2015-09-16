@@ -64,3 +64,13 @@ $factory->define(App\Gazzete\Category::class, function (Faker\Generator $faker)
 		'slug'   => Str::slug($name),
 	];
 });
+
+$factory->define(App\Gazzete\Contact::class, function (Faker\Generator $faker)
+{
+	return [
+		'name'         => $faker->name,
+		'email'        => $faker->email,
+		'phone_number' => $faker->phoneNumber,
+		'message'      => $faker->paragraphs(2, true),
+	];
+});

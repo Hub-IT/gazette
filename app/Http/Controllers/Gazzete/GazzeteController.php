@@ -6,6 +6,7 @@
 
 namespace App\Http\Controllers\Gazzete;
 
+use App\Gazzete\Contact;
 use App\Gazzete\Repositories\Category\CategoryRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
@@ -66,6 +67,13 @@ class GazzeteController extends Controller
 	 */
 	public function contact()
 	{
-		return view('gazzete.contact');
+		$contact = new Contact;
+
+		return view('gazzete.contact', compact('contact'));
+	}
+
+	public function postContact(Requests\PostContactRequest $request)
+	{
+
 	}
 }

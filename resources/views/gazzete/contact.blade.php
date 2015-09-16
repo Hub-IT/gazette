@@ -13,31 +13,31 @@
 
             <h3>Contact our Team</h3>
 
-            <form>
+            {!!  Form::model($contact, ['route' => 'contact.post']) !!}
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" placeholder="Jane Doe" class="form-control" name="name">
+                    {!! Form::label('name', 'Name') !!}
+                    {!! Form::text('name', 'Jane Doe', ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" placeholder="example@email.com" class="form-control" name="email">
-                </div>
-
-                <div class="form-group">
-                    <label for="number">Phone Number</label>
-                    <input type="tel" placeholder="++306912345678" class="form-control" name="number">
+                    {!! Form::label('email', 'Email') !!}
+                    {!! Form::email('email', 'example@email.com', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control" name="message" placeholder="Hello, please help me with ..."></textarea>
+                    {!! Form::label('phone_number', 'Phone Number') !!}
+                    {!! Form::tel('phone_number', '++306912345678', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    <input class="btn btn-default" type="submit" value="Send">
+                    {!! Form::label('message', 'Message') !!}
+                    {!! Form::textarea('message', 'Hello, please help me with ...', ['class' => 'form-control']) !!}
                 </div>
-            </form>
-            
+
+                <div class="form-group">
+                    {!! Form::submit('Send', ['class' => 'btn btn-default']) !!}
+                </div>
+            {!! Form::close() !!}
+
         </div>
 
     </div>
