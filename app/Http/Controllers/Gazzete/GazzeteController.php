@@ -19,9 +19,19 @@ use Illuminate\Http\Response;
  */
 class GazzeteController extends Controller
 {
+	/**
+	 * @var PostRepository
+	 */
 	protected $postRepository;
+	/**
+	 * @var CategoryRepository
+	 */
 	protected $categoryRepository;
 
+	/**
+	 * @param PostRepository $postRepository
+	 * @param CategoryRepository $categoryRepository
+	 */
 	public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
 	{
 		$this->postRepository = $postRepository;
@@ -43,8 +53,19 @@ class GazzeteController extends Controller
 		return view('gazzete.home', compact('posts', 'categories'));
 	}
 
+	/**
+	 * @return \Illuminate\View\View
+	 */
 	public function about()
 	{
 		return view('gazzete.about', compact('about'));
+	}
+
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function contact()
+	{
+		return view('gazzete.about', compact('contact'));
 	}
 }

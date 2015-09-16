@@ -30,13 +30,9 @@ class MasterLayoutTest extends TestCase
 	{
 		$this->visit(route('home'))
 			->see('Home')
-			->see('Contributors')
-			->see('About')
-			->see('Contact')
-			->see('Articles')
-			->see('Categories')
-			->see('Tags')
-			->see('Favorites');
+			->see('<li><i class="fa fa-home"></i><a href="' . route('home') . '">Home</a></li>')
+			->see('<li><i class="fa fa-image"></i><a href="' . route('about') . '">About</a></li>')
+			->see('<li><i class="fa fa-paper-plane"></i><a href="' . route('contact') . '">Contact</a></li>');
 	}
 
 	/** @test */

@@ -15,6 +15,7 @@ Route::resource('authors', 'Gazzete\AuthorsController', ['only' => 'show']);
 Route::resource('categories', 'Gazzete\CategoriesController', ['only' => 'show']);
 
 get('about', ['as' => 'about', 'uses' => 'Gazzete\GazzeteController@about']);
+get('contact', ['as' => 'contact', 'uses' => 'Gazzete\GazzeteController@contact']);
 
 Route::group(['prefix' => 'management'], function ()
 {
