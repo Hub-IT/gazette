@@ -21,15 +21,4 @@ class DbContactRepository extends DbRepository implements ContactRepository
 
 		parent::__construct($model);
 	}
-
-	/**
-	 * Store a contact.
-	 *
-	 * @param Contact $contact
-	 * @return mixed
-	 */
-	public function store(Contact $contact)
-	{
-
-	}
 }

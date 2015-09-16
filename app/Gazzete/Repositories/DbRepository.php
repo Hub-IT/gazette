@@ -42,8 +42,10 @@ abstract class DbRepository
 		return $this->model->all();
 	}
 
-	public function save()
+	public function save(array $data)
 	{
+		$this->model->fill($data);
+
 		return $this->model->save();
 	}
 

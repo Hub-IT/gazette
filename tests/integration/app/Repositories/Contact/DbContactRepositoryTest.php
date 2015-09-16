@@ -28,7 +28,7 @@ class DbContactRepositoryTest extends TestCase
 	{
 		$expectedContact = factory(\App\Gazzete\Contact::class)->make();
 
-		$this->dbContactRepository->setModel($expectedContact)->save();
+		$this->dbContactRepository->save($expectedContact->toArray());
 
 		$this->seeInDatabase('contacts', ['name'         => $expectedContact->name,
 		                                  'email'        => $expectedContact->email,

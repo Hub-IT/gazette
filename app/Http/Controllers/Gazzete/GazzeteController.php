@@ -8,6 +8,7 @@ namespace App\Http\Controllers\Gazzete;
 
 use App\Gazzete\Contact;
 use App\Gazzete\Repositories\Category\CategoryRepository;
+use app\Gazzete\Repositories\Contact\ContactRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -28,16 +29,21 @@ class GazzeteController extends Controller
 	 * @var CategoryRepository
 	 */
 	protected $categoryRepository;
+	/**
+	 * @var ContactRepository
+	 */
+	protected $contactRepository;
 
 	/**
 	 * @param PostRepository $postRepository
 	 * @param CategoryRepository $categoryRepository
+	 * @param ContactRepository $contactRepository
 	 */
-	public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
+	public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, ContactRepository $contactRepository)
 	{
 		$this->postRepository = $postRepository;
-
 		$this->categoryRepository = $categoryRepository;
+		$this->contactRepository = $contactRepository;
 	}
 
 	/**
@@ -79,7 +85,7 @@ class GazzeteController extends Controller
 	 */
 	public function postContact(Requests\PostContactRequest $request, Contact $contact)
 	{
-		$this->contactRepository->save($contact);
+		$this->contactRepository->set->save($contact);
 
 		Flash::success("Contact request is send.");
 

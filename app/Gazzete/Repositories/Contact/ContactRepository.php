@@ -7,16 +7,14 @@
 namespace app\Gazzete\Repositories\Contact;
 
 
-use App\Gazzete\Contact;
-
 interface ContactRepository
 {
 
 	/**
 	 * Store a contact.
 	 *
-	 * @param Contact $contact
+	 * @param $data
 	 * @return mixed
 	 */
-	public function store(Contact $contact);
+	public function save(array $data);
 }
