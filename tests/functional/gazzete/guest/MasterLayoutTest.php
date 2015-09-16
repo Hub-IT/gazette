@@ -6,9 +6,9 @@
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
- * Class LayoutTest verifies a guest can view all content pertaining to the layout of Gazzete page '/'.
+ * Class MasterLayoutTest verifies a guest can view all content.
  */
-class LayoutTest extends TestCase
+class MasterLayoutTest extends TestCase
 {
 	use DatabaseMigrations;
 
