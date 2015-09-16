@@ -42,4 +42,9 @@ class GazzeteController extends Controller
 
 		return view('gazzete.home', compact('posts', 'categories'));
 	}
+
+	public function about()
+	{
+		return view('gazzete.about', compact('about'));
+	}
 }
