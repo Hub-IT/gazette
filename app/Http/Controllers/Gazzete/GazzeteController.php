@@ -58,7 +58,7 @@ class GazzeteController extends Controller
 	 */
 	public function about()
 	{
-		return view('gazzete.about', compact('about'));
+		return view('gazzete.about');
 	}
 
 	/**
@@ -66,6 +66,6 @@ class GazzeteController extends Controller
 	 */
 	public function contact()
 	{
-		return view('gazzete.about', compact('contact'));
+		return view('gazzete.contact');
 	}
 }
