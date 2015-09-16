@@ -80,11 +80,11 @@ class GazzeteController extends Controller
 	}
 
 	/**
-	 * @param Requests\PostContactRequest $request
+	 * @param Requests\StoreContactRequest $request
 	 * @param Contact $contact
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function postContact(Requests\PostContactRequest $request, Contact $contact)
+	public function postContact(Requests\StoreContactRequest $request, Contact $contact)
 	{
 		$this->contactRepository->save($request->only(['name', 'email', 'phone_number', 'message']));
 

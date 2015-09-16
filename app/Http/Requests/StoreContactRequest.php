@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class PostContactRequest extends Request
+class StoreContactRequest extends Request
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class PostContactRequest extends Request
 	public function rules()
 	{
 		return [
-			'name'         => 'required',
+			'name'         => 'required|min:3',
 			'email'        => 'required|email',
 			'phone_number' => 'min:10',
 			'message'      => 'required|min:3',
