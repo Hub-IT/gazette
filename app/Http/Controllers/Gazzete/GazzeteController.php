@@ -8,11 +8,12 @@ namespace App\Http\Controllers\Gazzete;
 
 use App\Gazzete\Contact;
 use App\Gazzete\Repositories\Category\CategoryRepository;
-use app\Gazzete\Repositories\Contact\ContactRepository;
+use App\Gazzete\Repositories\Contact\ContactRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Response;
+use Laracasts\Flash\Flash;
 
 /**
  * Class GazzeteController displays views: home
@@ -85,9 +86,9 @@ class GazzeteController extends Controller
 	 */
 	public function postContact(Requests\PostContactRequest $request, Contact $contact)
 	{
-		$this->contactRepository->set->save($contact);
+		$this->contactRepository->save($request->only(['name', 'email', 'phone_number', 'message']));
 
-		Flash::success("Contact request is send.");
+		Flash::success("Contact request successfully sent.");
 
 		return redirect()->back();
 	}

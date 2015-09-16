@@ -15,7 +15,7 @@ interface PostRepository
 
 	public function all();
 
-	public function save();
+	public function save(array $data);
 
 	/**
 	 * Get latest posts

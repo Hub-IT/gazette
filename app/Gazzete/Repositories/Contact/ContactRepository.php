@@ -4,7 +4,7 @@
  * @since   16/9/2015
  */
 
-namespace app\Gazzete\Repositories\Contact;
+namespace App\Gazzete\Repositories\Contact;
 
 
 interface ContactRepository

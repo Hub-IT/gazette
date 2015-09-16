@@ -28,5 +28,8 @@ class BackendServiceProvider extends ServiceProvider
 
 		$this->app->bind('App\Gazzete\Repositories\Category\CategoryRepository',
 			'App\Gazzete\Repositories\Category\DbCategoryRepository');
+
+		$this->app->bind('App\Gazzete\Repositories\Contact\ContactRepository',
+			'App\Gazzete\Repositories\Contact\DbContactRepository');
 	}
 }

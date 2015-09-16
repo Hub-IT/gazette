@@ -41,10 +41,6 @@ class ContactTest extends TestCase
 			->type($contact->phone_number, 'phone_number')
 			->type($contact->message, 'message')
 			->press('Send')
-			->seeInDatabase('contacts', [
-				'name'         => $contact->name, 'email' => $contact->email,
-				'phone_number' => $contact->phone_number,
-				'message'      => $contact->message,
-			]);
+			->see("Contact request successfully sent.");
 	}
 }

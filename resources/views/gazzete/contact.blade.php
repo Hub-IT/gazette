@@ -12,6 +12,8 @@
         <div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
 
             <h3>Contact our Team</h3>
+            
+            @include('flash::message')
 
             {!!  Form::model($contact, ['route' => 'contact.post']) !!}
                 <div class="form-group">
