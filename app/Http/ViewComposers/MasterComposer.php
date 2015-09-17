@@ -8,15 +8,12 @@ namespace App\Http\ViewComposers;
 
 use App\Gazzete\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class MasterComposer
 {
 	public function compose(View $view)
 	{
-		$user = new User;
-
-		$user->avatar = "http://dummyimage.com/300.png/09f/fff";
-
-		$view->with('user', $user);
+		$view->with('user', Auth::user());
 	}
 }
