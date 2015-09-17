@@ -17,20 +17,16 @@ class LayoutTest extends TestCase
 {
 	use DatabaseMigrations;
 
+
 	/** @test */
-	public function it_reads_header()
+	public function it_reads_sidebar()
 	{
 		$user = factory(User::class)->create();
 		$user->assignRole(Role::administrator());
 
 		$this->actingAs($user)
-			->visit(route('management.dashboard.home'))
-			->seePageIs(route('management.dashboard.home'))
-			->see('Gazzete CMS')
-			->see('<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">');
-//			->see($user->name)
-//			->click('<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">')
-//			->see('GMS');
+			->visit(route('management.home'));
 	}
+
 
 }

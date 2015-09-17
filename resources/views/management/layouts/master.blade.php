@@ -6,6 +6,7 @@
     <title>@yield('title') &middot; Gazzete CMS</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
+    <link href='{!! asset("management/favicon.ico") !!}' rel="icon">
     <link href='{!! url("vendor/admin-lte/bootstrap/css/bootstrap.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/fontawesome/css/font-awesome.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/Ionicons/css/ionicons.min.css") !!}' rel='stylesheet' type='text/css'/>
