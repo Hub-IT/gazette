@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\Management\Auth;
 
-use App\Gazzete\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Support\Facades\Lang;
+use Laracasts\Flash\Flash;
 use Validator;
 
 class AuthController extends Controller
 {
-	use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+	protected $loginPath, $redirectAfterLogout, $redirectPath;
+	protected $username = 'email';
+
+	use AuthenticatesUsers, ThrottlesLogins;
 
 	/**
 	 * Create a new authentication controller instance.
@@ -19,47 +23,53 @@ class AuthController extends Controller
 	public function __construct()
 	{
 		$this->middleware('guest', ['except' => 'getLogout']);
+
+		$this->loginPath = route('management.auth.create');
+		$this->redirectPath = route('management.home');
+		$this->redirectAfterLogout = route('management.auth.create');
+	}
+
+	/**
+	 * Get the login username to be used by the controller.
+	 *
+	 * @return string
+	 */
+	public function loginUsername()
+	{
+		return 'email';
 	}
 
 	/**
 	 * Show the application login form.
 	 *
 	 * @return \Illuminate\Http\Response
-	 * @override
 	 */
 	public function getLogin()
 	{
-		return view('management.authenticate');
+		$email = '';
+
+		return view('management.authenticate', compact('email'));
+	}
+
+	public function authenticated($request, $user)
+	{
+		Flash::success($this->getSuccessfulLoginMessage());
+
+		return redirect()->intended($this->redirectPath());
 	}
 
 	/**
-	 * Get a validator for an incoming registration request.
+	 * Get the successful login message.
 	 *
-	 * @param  array $data
-	 * @return \Illuminate\Contracts\Validation\Validator
-	 *
+	 * @return string
 	 */
-	protected function validator(array $data)
+	protected function getSuccessfulLoginMessage()
 	{
-		return Validator::make($data, [
-			'name'     => 'required|max:255',
-			'email'    => 'required|email|max:255|unique:users',
-			'password' => 'required|confirmed|min:6',
-		]);
+		return Lang::has('auth.success') ? Lang::get('auth.success') : 'Authentication was successful.';
 	}
 
-	/**
-	 * Create a new user instance after a valid registration.
-	 *
-	 * @param  array $data
-	 * @return User
-	 */
-	protected function create(array $data)
+	public function redirectPath()
 	{
-		return User::create([
-			'name'     => $data['name'],
-			'email'    => $data['email'],
-			'password' => bcrypt($data['password']),
-		]);
+		return $this->redirectPath;
 	}
 }

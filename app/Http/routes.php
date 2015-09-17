@@ -20,7 +20,8 @@ post('contact', ['as' => 'contact.post', 'uses' => 'Gazzete\GazzeteController@po
 
 Route::group(['prefix' => 'management'], function ()
 {
-	get('dashboard', ['as' => 'management.dashboard.home', 'uses' => 'Management\DashboardController@home']);
+	get('dashboard', ['as' => 'management.home', 'uses' => 'Management\DashboardController@home']);
 
-	get('auth', ['as' => 'management.auth', 'uses' => 'Management\Auth\AuthController@getLogin']);
+	get('auth', ['as' => 'management.auth.create', 'uses' => 'Management\Auth\AuthController@getLogin']);
+	post('auth', ['as' => 'management.auth.store', 'uses' => 'Management\Auth\AuthController@postLogin']);
 });

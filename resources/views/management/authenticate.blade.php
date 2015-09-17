@@ -19,34 +19,40 @@
 <body class="login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="{!! route('management.auth.create') !!}"><b>Gazzete</b> Management System</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Sign in to gain access</p>
 
-        <form action="../../index2.html" method="post">
-            <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email"/>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password"/>
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label> <input type="checkbox"> Remember Me </label>
-                    </div>
+        {!! Form::model(null, ['route' => 'management.auth.store']) !!}
+
+        <div class="form-group has-feedback @if($errors->first('email')) has-error @endif has-feedback">
+            {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            {!! $errors->first('email', '<div class="help-block col-sm-reset inline">:message</div>') !!}
+        </div>
+
+        <div class="form-group has-feedback @if($errors->first('password')) has-error @endif has-feedback">
+            {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            {!! $errors->first('password', '<div class="help-block col-sm-reset inline">:message</div>') !!}
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    <label> <input type="checkbox"> Remember Me </label>
                 </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                </div>
-                <!-- /.col -->
             </div>
-        </form>
+
+            <div class="col-xs-4">
+                {!! Form::submit('Sign In', ['class' => 'btn btn-primary btn-block btn-flat']) !!}
+            </div>
+            <!-- /.col -->
+        </div>
+        {!! Form::close() !!}
 
     </div>
     <!-- /.login-box-body -->

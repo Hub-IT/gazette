@@ -1,6 +1,5 @@
 <?php
 
-use App\Gazzete\Role;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -12,11 +11,7 @@ class UserTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$authors = factory(App\Gazzete\User::class, rand(2, 10))->create();
-
-		foreach ($authors as $author)
-		{
-			$author->assignRole(Role::author());
-		}
+		factory(App\Gazzete\User::class)->create([
+			'email' => env('AUTHOR_EMAIL'), 'password' => bcrypt(env('AUTHOR_PASS'))]);
 	}
 }

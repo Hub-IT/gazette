@@ -32,6 +32,8 @@
 
         <section class="content-header">
 
+            @include('flash::message')
+
             @yield('content-header')
 
         </section>
