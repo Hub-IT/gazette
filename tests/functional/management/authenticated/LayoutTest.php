@@ -47,6 +47,18 @@ class LayoutTest extends TestCase
 			->see('<p>' . $user->name . '</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>')
 			->see('<a href="#"> <i class="fa fa-dashboard"></i> <span>Posts</span>')
-			->see('<li><a href="' . route('management.posts.create') . '"><i class="fa fa-circle-o"></i> Create</a></li>');
+			->see('<li><a href="' . route('management.posts.create') . '"><i class="fa fa-circle-o"></i> Create</a>');
+	}
+
+	/** @test */
+	public function it_reads_footer()
+	{
+		$user = factory(User::class)->create();
+
+		$this->actingAs($user)
+			->visit(route('management.home'))
+			->see('<b>Version</b> 0.1.0')
+			->see('<strong>Copyright &copy; ' . date('Y') . '
+            <a href="https://github.com/Hub-IT/gazzete">Gazzete</a>.</strong> MIT License.');
 	}
 }
