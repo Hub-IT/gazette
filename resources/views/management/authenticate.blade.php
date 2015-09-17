@@ -63,7 +63,7 @@
 <script src='{!! url("vendor/admin-lte/bootstrap/js/bootstrap.min.js") !!}'></script>
 <script src='{!! url("vendor/admin-lte/plugins/iCheck/icheck.min.js") !!}'></script>
 <script>
-    $(function () {
+c   $(function () {
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
             radioClass: 'iradio_square-blue',

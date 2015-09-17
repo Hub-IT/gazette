@@ -42,12 +42,7 @@ class LayoutTest extends TestCase
 		$user = factory(User::class)->create();
 
 		$this->actingAs($user)
-			->visit(route('management.home'))
-			->see('<img src="' . $user->avatar . '" class="img-circle" alt="User Image"/>')
-			->see('<p>' . $user->name . '</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>')
-			->see('<a href="#"> <i class="fa fa-dashboard"></i> <span>Posts</span>')
-			->see('<li><a href="' . route('management.posts.create') . '"><i class="fa fa-circle-o"></i> Create</a>');
+			->visit(route('management.home'));
 	}
 
 	/** @test */

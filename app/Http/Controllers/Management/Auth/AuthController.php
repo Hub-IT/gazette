@@ -22,7 +22,7 @@ class AuthController extends Controller
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('management.guest', ['except' => 'getLogout']);
 
 		$this->loginPath = route('management.auth.create');
 		$this->redirectPath = route('management.home');

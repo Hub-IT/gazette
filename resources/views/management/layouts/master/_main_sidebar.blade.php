@@ -18,7 +18,7 @@
                 <a href="#"> <i class="fa fa-dashboard"></i> <span>Posts</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
-                    <li><a href="{!! route('management.posts.create') !!}"><i class="fa fa-circle-o"></i> Create</a>
+                    <li><a href="{!! route('management.posts.create') !!}" id="posts-create"><i class="fa fa-circle-o"></i> Create</a>
                     </li>
                 </ul>
             </li>

@@ -31,4 +31,5 @@ class AuthTest extends TestCase
 			->seePageIs(route('management.home'))
 			->see('Authentication was successful.');
 	}
+
 }
