@@ -21,4 +21,6 @@ post('contact', ['as' => 'contact.post', 'uses' => 'Gazzete\GazzeteController@po
 Route::group(['prefix' => 'management'], function ()
 {
 	get('dashboard', ['as' => 'management.dashboard.home', 'uses' => 'Management\DashboardController@home']);
+
+	get('auth', ['as' => 'management.auth', 'uses' => 'Management\Auth\AuthController@getLogin']);
 });

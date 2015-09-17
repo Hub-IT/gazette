@@ -12,11 +12,14 @@
     <link href='{!! url("vendor/admin-lte/dist/css/AdminLTE.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/admin-lte/dist/css/skins/skin-blue.min.css") !!}' rel='stylesheet' type='text/css'/>
 
+    @yield('styles')
+
     <!--[if lt IE 9]>
     <script src='{!! url("vendor/html5shiv/dist/html5shiv.min.js") !!}'></script>
     <script src='{!! url("vendor/respond/dest/respond.min.js") !!}'></script><![endif]-->
 
 </head>
+
 <body class="skin-blue sidebar-mini">
 
 <div class="wrapper">
