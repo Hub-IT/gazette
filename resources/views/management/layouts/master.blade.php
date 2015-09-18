@@ -10,10 +10,11 @@
     <link href='{!! url("vendor/admin-lte/bootstrap/css/bootstrap.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/fontawesome/css/font-awesome.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/Ionicons/css/ionicons.min.css") !!}' rel='stylesheet' type='text/css'/>
-    <link href='{!! url("vendor/admin-lte/dist/css/AdminLTE.min.css") !!}' rel='stylesheet' type='text/css'/>
-    <link href='{!! url("vendor/admin-lte/dist/css/skins/skin-blue.min.css") !!}' rel='stylesheet' type='text/css'/>
 
     @yield('styles')
+
+    <link href='{!! url("vendor/admin-lte/dist/css/AdminLTE.min.css") !!}' rel='stylesheet' type='text/css'/>
+    <link href='{!! url("vendor/admin-lte/dist/css/skins/skin-blue.min.css") !!}' rel='stylesheet' type='text/css'/>
 
     <!--[if lt IE 9]>
     <script src='{!! url("vendor/html5shiv/dist/html5shiv.min.js") !!}'></script>

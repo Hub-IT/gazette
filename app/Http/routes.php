@@ -21,7 +21,7 @@ post('contact', ['as' => 'contact.post', 'uses' => 'Gazzete\GazzeteController@po
 Route::group(['prefix' => 'management'], function ()
 {
 	get('dashboard', ['as' => 'management.home', 'uses' => 'Management\DashboardController@home']);
-	Route::resource('posts', 'Management\PostsController', ['only' => 'create']);
+	Route::resource('posts', 'Management\PostsController', ['only' => ['create', 'store', 'edit', 'update']]);
 
 	get('auth', ['as' => 'management.auth.create', 'uses' => 'Management\Auth\AuthController@getLogin']);
 	post('auth', ['as' => 'management.auth.store', 'uses' => 'Management\Auth\AuthController@postLogin']);

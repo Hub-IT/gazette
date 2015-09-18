@@ -34,6 +34,8 @@ class PostsTest extends TestCase
 			->see('<input class="form-control" placeholder="Required. One to two sentences." name="summary" type="text" id="summary">')
 			->see('<label for="header_background">Header Background URL</label>')
 			->see('<input class="form-control" placeholder="Recommended but not required. Size: 1555x1037 px." name="header_background" type="text" id="header_background">')
+			->see('<label for="category_id">Category</label>')
+			->see('<select class="select2 form-control" style="width: 100%" id="category_id" name="category_id"><option selected="selected" value="">Select a category</option>')
 			->see('<input name="publish" type="checkbox" value="1"> Publish')
 			->see("<h3 class='box-title'>Content <small>Simple and fast</small></h3>")
 			->see('<textarea class="textarea" placeholder="Write the article here"')
@@ -41,7 +43,7 @@ class PostsTest extends TestCase
 	}
 
 	/** @test */
-	public function it_creates_post()
+	public function it_creates_a_post()
 	{
 		$user = factory(User::class)->create();
 		$user->assignRole(Role::author());
@@ -53,7 +55,9 @@ class PostsTest extends TestCase
 			->type($post->title, 'title')
 			->type($post->summary, 'summary')
 			->type($post->header_background, 'header_background')
+			->select($post->category->id, 'category_id')
 			->type($post->content, 'content')
+			->press('Create')
 			->see('Post created.');
 	}
 }

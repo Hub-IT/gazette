@@ -27,13 +27,13 @@
 
         {!! Form::model(null, ['route' => 'management.auth.store']) !!}
 
-        <div class="form-group has-feedback @if($errors->first('email')) has-error @endif has-feedback">
+        <div class="form-group has-feedback @if($errors->first('email')) has-error @endif">
             {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             {!! $errors->first('email', '<div class="help-block col-sm-reset inline">:message</div>') !!}
         </div>
 
-        <div class="form-group has-feedback @if($errors->first('password')) has-error @endif has-feedback">
+        <div class="form-group has-feedback @if($errors->first('password')) has-error @endif">
             {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             {!! $errors->first('password', '<div class="help-block col-sm-reset inline">:message</div>') !!}

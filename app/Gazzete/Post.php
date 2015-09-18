@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	protected $fillable = ['title', 'summary', 'content', 'minutes_read', 'slug', 'header_background'];
+	protected $fillable = ['title', 'summary', 'content', 'minutes_read', 'header_background', 'slug'];
 
 	public function assignAuthor($author)
 	{

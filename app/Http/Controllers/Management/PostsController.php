@@ -3,27 +3,26 @@
 namespace App\Http\Controllers\Management;
 
 use App\Gazzete\Post;
+use App\Gazzete\Repositories\Category\CategoryRepository;
+use App\Gazzete\Repositories\Post\PostRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash;
 
 class PostsController extends Controller
 {
-	public function __construct()
+	protected $postRepository;
+	protected $categoryRepository;
+
+	public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
 	{
 		$this->middleware('management.auth');
 		$this->middleware('management.auth.author');
 
-	}
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
+		$this->postRepository = $postRepository;
+		$this->categoryRepository = $categoryRepository;
 	}
 
 	/**
@@ -35,62 +34,45 @@ class PostsController extends Controller
 	{
 		$post = new Post;
 
-		return view('management.posts.create', compact('post'));
+		$categories = $this->categoryRepository->all()->lists('name', 'id');
+
+		return view('management.posts.create', compact('post', 'categories'));
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  Request $request
+	 * @param Requests\StorePostRequest $request
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(Requests\StorePostRequest $request)
 	{
-		//
-	}
+		$data = $request->only(['title', 'summary', 'content', 'minutes_read', 'header_background', 'category_id']);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+		$data['author_id'] = Auth::user()->id;
+
+		if ( false !== $post = $this->postRepository->save($data) )
+		{
+			Flash::success('Post created.');
+
+			return redirect()->route('management.posts.edit', $post->slug);
+		}
+
+		Flash::error('Unable to store post. If this error persist, contact an administrator.');
+
+		return redirect()->back();
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int $id
+	 * @param $post
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($post)
 	{
-		//
-	}
+		$categories = $this->categoryRepository->all()->lists('name', 'id');
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  Request $request
-	 * @param  int $id
-	 * @return Response
-	 */
-	public function update(Request $request, $id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return view('management.posts.edit', compact('post', 'categories'));
 	}
 }

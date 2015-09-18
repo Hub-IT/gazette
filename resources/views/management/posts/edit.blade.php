@@ -1,5 +1,5 @@
 @extends('management.layouts.master')
-@section('title', 'Create Post')
+@section('title', 'Edit Post')
 @section('styles')
     <link href='{!! url("vendor/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/admin-lte/plugins/iCheck/square/blue.css") !!}' rel='stylesheet' type='text/css'/>
@@ -9,7 +9,7 @@
     <div class="row">
         <!-- left column -->
         <div class="col-md-12">
-            {!! Form::model($post, ['route' => 'management.posts.store', 'role' => 'form']) !!}
+            {!! Form::model($post, ['route' => 'management.posts.update', 'role' => 'form']) !!}
 
             @include('management.posts._form')
 
