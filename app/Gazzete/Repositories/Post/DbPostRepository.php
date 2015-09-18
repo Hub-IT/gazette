@@ -53,12 +53,10 @@ class DbPostRepository extends DbRepository implements PostRepository
 		$this->model->fill($data);
 
 		$author = User::find($data['author_id'])->firstOrFail();
+		$this->model->assignAuthor($author);
 
 		$category = User::find($data['category_id'])->firstOrFail();
-
-		$this->model->assignAuthor($author);
-
-		$this->model->assignAuthor($author);
+		$this->model->assignCategory($category);
 
 		return $this->model->save();
 	}
