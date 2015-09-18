@@ -30,10 +30,10 @@
                             {!! $errors->first('summary', '<div class="help-block col-sm-reset inline">:message</div>') !!}
                         </div>
 
-                        <div class="col-md-6 form-group">
-                            {!! Form::label('header_background', 'Header background') !!}
-                            {!! Form::file('header_background') !!}
-                            <p class="help-block">Recommended but not required. Size: 1555x1037 px.</p>
+                        <div class="col-md-6 form-group has-feedback @if($errors->first('header_background')) has-error @endif has-feedback">
+                            {!! Form::label('header_background', 'Header Background URL') !!}
+                            {!! Form::text('header_background', $post->header_background, ['class' => 'form-control', 'placeholder' => 'Recommended but not required. Size: 1555x1037 px.']) !!}
+                            {!! $errors->first('header_background', '<div class="help-block col-sm-reset inline">:message</div>') !!}
                         </div>
 
                         <div class="col-md-6 form-group">

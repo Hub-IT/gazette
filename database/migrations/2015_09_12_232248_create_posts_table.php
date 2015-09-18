@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
 			$table->integer('minutes_read')->nullable();
 			$table->longText('content');
 			$table->string('slug')->unique();
-			$table->string('avatar');
+			$table->string('header_background');
 			$table->timestamps();
 
 			$table->integer('author_id')->unsigned()->index();

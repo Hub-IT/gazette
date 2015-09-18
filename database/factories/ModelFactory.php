@@ -43,14 +43,14 @@ $factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 	$content = "<p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p>";
 
 	return [
-		'title'        => $title,
-		'summary'      => $faker->paragraphs(1, true),
-		'content'      => $content,
-		'minutes_read' => $faker->numberBetween(1, 100),
-		'category_id'  => $category->id,
-		'author_id'    => $author->id,
-		'slug'         => Str::slug($title),
-		'avatar'       => $faker->imageUrl(1555, 1037),
+		'title'             => $title,
+		'summary'           => $faker->paragraphs(1, true),
+		'content'           => $content,
+		'minutes_read'      => $faker->numberBetween(1, 100),
+		'category_id'       => $category->id,
+		'author_id'         => $author->id,
+		'slug'              => Str::slug($title),
+		'header_background' => $faker->imageUrl(1555, 1037),
 	];
 });
 

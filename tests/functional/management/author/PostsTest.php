@@ -6,6 +6,7 @@
 
 namespace tests\functional\management\author;
 
+use App\Gazzete\Post;
 use App\Gazzete\Role;
 use App\Gazzete\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -31,12 +32,28 @@ class PostsTest extends TestCase
 			->see('<input class="form-control" placeholder="Required" name="title" type="text" id="title">')
 			->see('<label for="summary">Summary</label>')
 			->see('<input class="form-control" placeholder="Required. One to two sentences." name="summary" type="text" id="summary">')
-			->see('<label for="header_background">Header background</label>')
-			->see('<input name="header_background" type="file" id="header_background">')
-			->see('<p class="help-block">Recommended but not required. Size: 1555x1037 px.</p>')
+			->see('<label for="header_background">Header Background URL</label>')
+			->see('<input class="form-control" placeholder="Recommended but not required. Size: 1555x1037 px." name="header_background" type="text" id="header_background">')
 			->see('<input name="publish" type="checkbox" value="1"> Publish')
 			->see("<h3 class='box-title'>Content <small>Simple and fast</small></h3>")
 			->see('<textarea class="textarea" placeholder="Write the article here"')
 			->see('<button type="submit" class="btn btn-primary">Create</button>');
+	}
+
+	/** @test */
+	public function it_creates_post()
+	{
+		$user = factory(User::class)->create();
+		$user->assignRole(Role::author());
+
+		$post = factory(Post::class)->make();
+
+		$this->actingAs($user)
+			->visit(route('management.posts.create'))
+			->type($post->title, 'title')
+			->type($post->summary, 'summary')
+			->type($post->header_background, 'header_background')
+			->type($post->content, 'content')
+			->see('Post created.');
 	}
 }
