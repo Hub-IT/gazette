@@ -1,7 +1,7 @@
 @extends('gazzete.layouts.master')
 @section('title', $post->title)
 @section('content')
-<header class="hero-image" role="banner" style="background-image: url('{!! $post->avatar !!}');">
+<header class="hero-image" role="banner" style="background-image: url('{!! $post->header_background or url('img/default-single-hero.jpg') !!}');">
     <span class="menu-trigger animated fadeInDown">
         <span class="bar"></span>
         <span class="bar"></span>
