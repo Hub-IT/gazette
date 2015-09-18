@@ -31,8 +31,8 @@
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label for="exampleInputFile">Header background</label>
-                            <input type="file" id="exampleInputFile">
+                            {!! Form::label('header_background', 'Header background') !!}
+                            {!! Form::file('header_background') !!}
                             <p class="help-block">Recommended but not required. Size: 1555x1037 px.</p>
                         </div>
 
@@ -57,7 +57,8 @@
                 </div><!-- /.box-header -->
                 <div class='box-body pad'>
                     <form>
-                        <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                        {!! Form::textarea('content', null, ['class' => 'textarea',
+                        'placeholder' => 'Write the article here', 'style' => 'width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;']) !!}
                     </form>
                 </div>
             </div>
