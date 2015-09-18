@@ -54,7 +54,6 @@ class DbPostRepositoryTest extends \TestCase
 		$author = factory(App\Gazzete\User::class)->create();
 		$author->assignRole(Role::author());
 
-
 		$actualPost = Post::find($post->id);
 		$post->assignAuthor($author);
 		$this->assertNotEquals($post->author, $actualPost->author);
@@ -62,6 +61,21 @@ class DbPostRepositoryTest extends \TestCase
 		$actualPost = Post::find($post->id);
 		$this->assertNotNull($actualPost->author);
 		$this->assertEquals($author->id, $actualPost->author->id);
+	}
+
+	/** @test */
+	public function it_assigns_category()
+	{
+		$post = factory(App\Gazzete\Post::class)->create();
+		$category = factory(App\Gazzete\Category::class)->create();
+
+		$this->assertNotEquals($post->category->name, $category->name);
+
+		$post->assignCategory($category);
+
+		$actualPost = Post::find($post->id);
+
+		$this->assertEquals($category->name, $actualPost->category->name);
 	}
 
 	/** @test */
@@ -78,4 +92,24 @@ class DbPostRepositoryTest extends \TestCase
 		$this->assertEquals($expectedCategories[1]->name, $actualCategories->get(1)->name);
 	}
 
+	/** @test */
+	public function it_creates_a_post()
+	{
+		$post = factory(App\Gazzete\Post::class)->make();
+
+		$post = ['title'             => $post->title,
+		         'summary'           => $post->summary,
+		         'content'           => $post->content,
+		         'minutes_read'      => $post->minutes_read,
+		         'slug'              => $post->slug,
+		         'header_background' => $post->header_background,
+		         'author_id'         => $post->author_id,
+		         'category_id'       => $post->category_id];
+
+		$this->notSeeInDatabase('posts', $post);
+
+		$this->dbPostRepository->save($post);
+
+		$this->seeInDatabase('posts', $post);
+	}
 }

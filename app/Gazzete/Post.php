@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	protected $fillable = ['title', 'summary', 'content', 'minutes_read'];
+	protected $fillable = ['title', 'summary', 'content', 'minutes_read', 'slug', 'header_background'];
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -19,6 +19,11 @@ class Post extends Model
 	public function assignAuthor($author)
 	{
 		$this->author()->associate($author)->save();
+	}
+
+	public function assignCategory($category)
+	{
+		$this->category()->associate($category)->save();
 	}
 
 	/**

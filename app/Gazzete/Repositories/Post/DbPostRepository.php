@@ -3,6 +3,7 @@ namespace App\Gazzete\Repositories\Post;
 
 use App\Gazzete\Post;
 use App\Gazzete\Repositories\DbRepository;
+use App\Gazzete\User;
 
 /**
  * @author  Rizart Dokollari <r.dokollari@gmail.com>
@@ -42,5 +43,23 @@ class DbPostRepository extends DbRepository implements PostRepository
 	public function getCategories()
 	{
 
+	}
+
+	/**
+	 * @param array $data
+	 */
+	public function save(array $data)
+	{
+		$this->model->fill($data);
+
+		$author = User::find($data['author_id'])->firstOrFail();
+
+		$category = User::find($data['category_id'])->firstOrFail();
+
+		$this->model->assignAuthor($author);
+
+		$this->model->assignAuthor($author);
+
+		return $this->model->save();
 	}
 }
