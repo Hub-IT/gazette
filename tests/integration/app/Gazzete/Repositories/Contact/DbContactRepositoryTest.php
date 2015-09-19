@@ -4,7 +4,7 @@
  * @since   16/9/2015
  */
 
-namespace tests\integration\app\Repositories\Contact;
+namespace tests\integration\app\Gazzete\Repositories\Contact;
 
 use App\Gazzete\Repositories\Contact\DbContactRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

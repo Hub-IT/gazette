@@ -40,11 +40,18 @@ class User extends Model implements AuthenticatableContract,
 	public function assignRole($role)
 	{
 		$this->roles()->attach($role);
+
+		return $this;
 	}
 
 	public function roles()
 	{
 		return $this->belongsToMany('App\Gazzete\Role')->withTimestamps();
+	}
+
+	public function hasRole($role)
+	{
+		return in_array($role->name, array_column($this->roles()->get()->toArray(), 'name'));
 	}
 
 	public function posts()

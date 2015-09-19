@@ -27,8 +27,8 @@ class Kernel extends HttpKernel
 	 */
 	protected $routeMiddleware = [
 		'management.auth'        => \App\Http\Middleware\AuthenticateManagement::class,
+		'management.auth.administrator'  => \App\Http\Middleware\AuthenticateManagementAdministrator::class,
 		'management.auth.author' => \App\Http\Middleware\AuthenticateManagementAuthor::class,
-		'management.author'      => \App\Http\Middleware\AuthenticateManagement::class,
 		'auth.basic'             => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
 		'management.guest'       => \App\Http\Middleware\RedirectIfManagementAuthenticated::class,
 	];
