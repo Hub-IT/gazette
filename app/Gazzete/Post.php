@@ -10,7 +10,7 @@ class Post extends Model
 
 	public function assignAuthor($author)
 	{
-		$this->author()->associate($author);
+		return $this->author()->associate($author) ? $this : false;
 	}
 
 	/**
@@ -23,7 +23,7 @@ class Post extends Model
 
 	public function assignCategory($category)
 	{
-		$this->category()->associate($category);
+		return $this->category()->associate($category) ? $this : false;
 	}
 
 	/**

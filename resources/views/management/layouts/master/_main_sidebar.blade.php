@@ -18,7 +18,19 @@
                 <a href="#"> <i class="fa fa-dashboard"></i> <span>Posts</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
-                    <li><a href="{!! route('management.posts.create') !!}" id="posts-create"><i class="fa fa-circle-o"></i> Create</a>
+                    <li>
+                        <a href="{!! route('management.posts.create') !!}" id="posts-create">
+                            <i class="fa fa-circle-o"></i> Create</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"> <i class="fa fa-envelope"></i> <span>Contact Requests</span>
+                    <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{!! route('management.contact-requests.index') !!}" id="contact-requests-index">
+                            <i class="fa fa-list"></i> List</a>
                     </li>
                 </ul>
             </li>

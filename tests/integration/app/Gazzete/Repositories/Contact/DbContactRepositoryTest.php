@@ -26,7 +26,7 @@ class DbContactRepositoryTest extends TestCase
 	/** @test */
 	public function it_saves_contact()
 	{
-		$expectedContact = factory(\App\Gazzete\Contact::class)->make();
+		$expectedContact = factory(\App\Gazzete\ContactRequest::class)->make();
 
 		$this->dbContactRepository->save($expectedContact->toArray());
 

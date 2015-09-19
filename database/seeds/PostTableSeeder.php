@@ -18,7 +18,7 @@ class PostTableSeeder extends Seeder
 			$query->where('name', '=', Role::AUTHOR);
 		}])->get();
 
-		$posts = factory(App\Gazzete\Post::class, 15)->create();
+		$posts = factory(App\Gazzete\Post::class, 13)->create();
 
 		foreach ($posts as $post)
 		{

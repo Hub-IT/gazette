@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Management;
 
-use App\Http\Controllers\Controller;
+use App\Gazzete\Repositories\Contact\ContactRepository;
 use App\Http\Requests;
 use Illuminate\Http\Response;
 
-class ContactRequestsController extends Controller
+class ContactRequestsController extends BaseController
 {
-	public function __construct()
+	protected $contactRepository;
+
+	public function __construct(ContactRepository $contactRepository)
 	{
-		$this->middleware('management.auth');
-		$this->middleware('management.auth.administrator');
+		parent::__construct();
+
+		$this->contactRepository = $contactRepository;
 	}
 
 	/**
@@ -21,6 +24,8 @@ class ContactRequestsController extends Controller
 	 */
 	public function index()
 	{
-		return view('management.contact_requests.index');
+		$contactRequests = $this->contactRepository->all();
+
+		return view('management.contact_requests.index', compact('contactRequests'));
 	}
 }

@@ -9,4 +9,7 @@ Homestead.json
 /.idea
 
 # Gazzete
-/public/vendor
+/public/vendor/
+
+# Developer
+todo.txt

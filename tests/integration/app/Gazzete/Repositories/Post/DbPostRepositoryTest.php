@@ -1,6 +1,5 @@
 <?php
 use App\Gazzete\Post;
-use App\Gazzete\Repositories\Category\DbCategoryRepository;
 use App\Gazzete\Repositories\Post\DbPostRepository;
 use App\Gazzete\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -14,15 +13,12 @@ class DbPostRepositoryTest extends \TestCase
 	use DatabaseMigrations;
 
 	protected $dbPostRepository;
-	protected $dbCategoryRepository;
 
 	public function setUp()
 	{
 		parent::setUp();
 
 		$this->dbPostRepository = new DbPostRepository();
-
-		$this->dbCategoryRepository = new DbCategoryRepository();
 	}
 
 	/** @test */
@@ -52,10 +48,10 @@ class DbPostRepositoryTest extends \TestCase
 	{
 		$post = factory(App\Gazzete\Post::class)->create();
 		$author = factory(App\Gazzete\User::class)->create();
-		$author->assignRole(Role::author());
+		$author->assignRole(Role::author())->save();
 
 		$actualPost = Post::find($post->id);
-		$post->assignAuthor($author);
+		$post->assignAuthor($author)->save();
 		$this->assertNotEquals($post->author, $actualPost->author);
 
 		$actualPost = Post::find($post->id);
@@ -67,29 +63,15 @@ class DbPostRepositoryTest extends \TestCase
 	public function it_assigns_category()
 	{
 		$post = factory(App\Gazzete\Post::class)->create();
-		$category = factory(App\Gazzete\Category::class)->create();
+		$expectedCategory = factory(App\Gazzete\Category::class)->create();
 
-		$this->assertNotEquals($post->category->name, $category->name);
+		$this->assertNotEquals($post->category->name, $expectedCategory->name);
 
-		$post->assignCategory($category);
+		$post->assignCategory($expectedCategory)->save();
 
 		$actualPost = Post::find($post->id);
 
-		$this->assertEquals($category->name, $actualPost->category->name);
-	}
-
-	/** @test */
-	public function it_returns_all_categories()
-	{
-		$expectedCategories = factory(App\Gazzete\Category::class, 2)->create();
-
-		$actualCategories = $this->dbCategoryRepository->all();
-
-		$this->assertCount(2, $actualCategories);
-		$this->assertEquals($expectedCategories[0]->id, $actualCategories->get(0)->id);
-		$this->assertEquals($expectedCategories[0]->name, $actualCategories->get(0)->name);
-		$this->assertEquals($expectedCategories[1]->id, $actualCategories->get(1)->id);
-		$this->assertEquals($expectedCategories[1]->name, $actualCategories->get(1)->name);
+		$this->assertEquals($expectedCategory->name, $actualPost->category->name);
 	}
 
 	/** @test */

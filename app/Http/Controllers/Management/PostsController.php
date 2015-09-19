@@ -5,23 +5,22 @@ namespace App\Http\Controllers\Management;
 use App\Gazzete\Post;
 use App\Gazzete\Repositories\Category\CategoryRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 
-class PostsController extends Controller
+class PostsController extends BaseController
 {
 	protected $postRepository;
 	protected $categoryRepository;
 
 	public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
 	{
-		$this->middleware('management.auth');
-		$this->middleware('management.auth.author');
+		parent::__construct();
 
 		$this->postRepository = $postRepository;
+
 		$this->categoryRepository = $categoryRepository;
 	}
 

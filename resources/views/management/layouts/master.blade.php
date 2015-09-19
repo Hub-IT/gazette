@@ -9,7 +9,7 @@
     <link href='{!! asset("management/favicon.ico") !!}' rel="icon">
     <link href='{!! url("vendor/admin-lte/bootstrap/css/bootstrap.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/fontawesome/css/font-awesome.min.css") !!}' rel='stylesheet' type='text/css'/>
-    <link href='{!! url("vendor/Ionicons/css/ionicons.min.css") !!}' rel='stylesheet' type='text/css'/>
+    <link href='{!! url("vendor/ionicons/css/ionicons.min.css") !!}' rel='stylesheet' type='text/css'/>
 
     @yield('styles')
 

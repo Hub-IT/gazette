@@ -9,7 +9,7 @@
     <div class="row">
         <!-- left column -->
         <div class="col-md-12">
-            {!! form::model($post, ['route' => 'management.posts.store', 'role' => 'form']) !!}
+            {!! Form::model($post, ['route' => 'management.posts.store', 'role' => 'form']) !!}
 
             @include('management.posts._form')
 
@@ -17,7 +17,7 @@
                 <button type="submit" class="btn btn-primary">create</button>
             </div>
 
-            {!! form::close() !!}
+            {!! Form::close() !!}
         </div>
         <!--/.col (left) -->
     </div>

@@ -6,7 +6,7 @@
 
 namespace App\Http\Controllers\Gazzete;
 
-use App\Gazzete\Contact;
+use App\Gazzete\ContactRequest;
 use App\Gazzete\Repositories\Category\CategoryRepository;
 use App\Gazzete\Repositories\Contact\ContactRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
@@ -74,17 +74,17 @@ class GazzeteController extends Controller
 	 */
 	public function contact()
 	{
-		$contact = new Contact;
+		$contact = new ContactRequest;
 
 		return view('gazzete.contact', compact('contact'));
 	}
 
 	/**
 	 * @param Requests\StoreContactRequest $request
-	 * @param Contact $contact
+	 * @param ContactRequest $contact
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function postContact(Requests\StoreContactRequest $request, Contact $contact)
+	public function postContact(Requests\StoreContactRequest $request, ContactRequest $contact)
 	{
 		$this->contactRepository->save($request->only(['name', 'email', 'phone_number', 'message']));
 

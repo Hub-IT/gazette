@@ -36,6 +36,13 @@ class AuthenticateManagementAuthor
 	{
 		if ( ! $this->auth->user()->hasRole(Role::author()) ) return response('Unauthorized.', 401);
 
+		if ( $this->auth->guest() )
+		{
+			if ( $request->ajax() ) return response('Unauthorized.', 401);
+
+			return redirect()->guest(route('management.auth.create'));
+		}
+
 		return $next($request);
 	}
 }

@@ -65,7 +65,7 @@ $factory->define(App\Gazzete\Category::class, function (Faker\Generator $faker)
 	];
 });
 
-$factory->define(App\Gazzete\Contact::class, function (Faker\Generator $faker)
+$factory->define(App\Gazzete\ContactRequest::class, function (Faker\Generator $faker)
 {
 	return [
 		'name'         => $faker->name,

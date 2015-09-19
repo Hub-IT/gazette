@@ -17,10 +17,10 @@ class PostsTest extends TestCase
 	use DatabaseMigrations;
 
 	/** @test */
-	public function it_reads_post_creation_page()
+	public function it_reads_post_create()
 	{
 		$user = factory(User::class)->create();
-		$user->assignRole(Role::author());
+		$user->assignRole(Role::author())->save();
 
 		$this->actingAs($user)
 			->visit(route('management.home'))
@@ -59,5 +59,11 @@ class PostsTest extends TestCase
 			->type($post->content, 'content')
 			->press('Create')
 			->see('Post created.');
+	}
+
+	/** @test */
+	public function it_requests_authorization()
+	{
+
 	}
 }
