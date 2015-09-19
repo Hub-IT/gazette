@@ -1,23 +1,24 @@
 ## Gazzete Web App
 
 ## Installation
-- BowerPHP
-- Composer. Install back-end libraries.
+- [BowerPHP][bower_php_link]
+- [Composer][composer_link]. Install back-end libraries.
 
 ## Developers
 ### Tests
 Gazzete Web App is build the TDD way. We first write functional tests, then integration tests, and where needed unit tests.
-###
-- postgres terminal: psql -U homestead -h localhost # password: secret
-- create gazzete_testing database
+#### Database 
+> Use a separate database for tests.  
+
+- `psql -U homestead -h localhost` # password: secret
+- `create gazzete database` && `create gazzete_testing database`
 #### TODO
-- Use selenium for front-end testing:
-	- Verify a user request more posts (Home page view)
+- Use [selenium][selenium_link] for front-end testing:
+	- Verify a user can read more posts either through the infinite scroll for small screens or manually for big screens.
 
 
 ### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+ - The Gazzete App is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 ### Credits
 - html5shiv
@@ -27,3 +28,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - admin-lte
 - jpanelmenu
 - jquery
+- Laravel
+
+[bower_php_link]: https://github.com/Bee-Lab/bowerphp
+[Composer]: https://getcomposer.org/
+[selenium_link]: http://www.seleniumhq.org/
