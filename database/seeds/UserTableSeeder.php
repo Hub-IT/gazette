@@ -13,5 +13,7 @@ class UserTableSeeder extends Seeder
 	{
 		factory(App\Gazzete\User::class)->create([
 			'email' => env('AUTHOR_EMAIL'), 'password' => bcrypt(env('AUTHOR_PASS'))]);
+		factory(App\Gazzete\User::class)->create([
+			'email' => env('ADMIN_EMAIL'), 'password' => bcrypt(env('ADMIN_PASS'))]);
 	}
 }
