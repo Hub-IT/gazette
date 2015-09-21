@@ -27,6 +27,6 @@ class LayoutTest extends TestCase
 			->see('<p>' . $user->name . '</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>')
 			->see('<a href="#"> <i class="fa fa-dashboard"></i> <span>Posts</span>')
-			->see('<li><a href="' . route('management.posts.create') . '" id="posts-create"><i class="fa fa-circle-o"></i> Create</a>');
+			->see('<a href="' . route('management.posts.create') . '" id="posts-create">');
 	}
 }

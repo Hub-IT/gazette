@@ -30,7 +30,7 @@ class DbContactRepositoryTest extends TestCase
 
 		$this->dbContactRepository->save($expectedContact->toArray());
 
-		$this->seeInDatabase('contacts', ['name'         => $expectedContact->name,
+		$this->seeInDatabase('contact_requests', ['name'         => $expectedContact->name,
 		                                  'email'        => $expectedContact->email,
 		                                  'phone_number' => $expectedContact->phone_number,
 		                                  'message'      => $expectedContact->message]);

@@ -14,7 +14,7 @@
             @include('management.posts._form')
 
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary">create</button>
+                {!! Form::button('Create', ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}
