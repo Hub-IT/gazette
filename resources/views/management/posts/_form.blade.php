@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 form-group has-feedback @if($errors->first('publish')) has-error @endif">
+        <div class="col-md-6 form-group has-feedback checkbox icheck @if($errors->first('publish')) has-error @endif">
             <label>
                 {!! Form::checkbox('publish') !!} Publish </label>
         </div>

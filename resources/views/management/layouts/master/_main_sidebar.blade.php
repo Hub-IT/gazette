@@ -15,7 +15,7 @@
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-                <a href="#"> <i class="fa fa-dashboard"></i> <span>Posts</span>
+                <a href="#"> <i class="fa fa-newspaper-o"></i> <span>Posts</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li>
