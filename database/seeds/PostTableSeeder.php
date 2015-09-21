@@ -1,7 +1,6 @@
 <?php
 
 use App\Gazzete\Role;
-use App\Gazzete\User;
 use Illuminate\Database\Seeder;
 
 class PostTableSeeder extends Seeder
@@ -13,10 +12,7 @@ class PostTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$authors = User::with(['roles' => function ($query)
-		{
-			$query->where('name', '=', Role::AUTHOR);
-		}])->get();
+		$authors = factory(App\Gazzete\User::class, 3)->create(['role_id' => Role::author()->id]);
 
 		$posts = factory(App\Gazzete\Post::class, 13)->create();
 

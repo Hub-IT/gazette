@@ -24,6 +24,8 @@ class CreateRolesTable extends Migration
 		Role::create(['name' => Role::ADMINISTRATOR]);
 		Role::create(['name' => Role::EDITOR]);
 		Role::create(['name' => Role::AUTHOR]);
+		Role::create(['name' => Role::CONTRIBUTOR]);
+		Role::create(['name' => Role::SUBSCRIBER]);
 	}
 
 	/**

@@ -1,7 +1,5 @@
 <?php
 
-use App\Gazzete\Role;
-use App\Gazzete\User;
 use Illuminate\Database\Seeder;
 
 class ContactRequestTableSeeder extends Seeder

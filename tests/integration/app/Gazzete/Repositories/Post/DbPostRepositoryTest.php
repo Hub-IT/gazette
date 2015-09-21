@@ -47,8 +47,7 @@ class DbPostRepositoryTest extends \TestCase
 	public function it_assigns_author()
 	{
 		$post = factory(App\Gazzete\Post::class)->create();
-		$author = factory(App\Gazzete\User::class)->create();
-		$author->assignRole(Role::author())->save();
+		$author = factory(App\Gazzete\User::class, 'user_author')->create();
 
 		$actualPost = Post::find($post->id);
 		$post->assignAuthor($author)->save();

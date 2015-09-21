@@ -24,8 +24,50 @@ $factory->define(App\Gazzete\User::class, function (Faker\Generator $faker)
 		'remember_token' => str_random(10),
 		'avatar'         => $faker->imageUrl(50, 50),
 		'slug'           => Str::slug($name),
+		'role_id'        => factory(App\Gazzete\Role::class)->create()->id,
 	];
 });
+
+$factory->defineAs(App\Gazzete\User::class, 'user_administrator', function ($faker) use ($factory)
+{
+	$user = $factory->raw(App\Gazzete\User::class);
+	$author = ['role_id' => \App\Gazzete\Role::administrator()->id];
+
+	return array_merge($user, $author);
+});
+
+$factory->defineAs(App\Gazzete\User::class, 'user_author', function ($faker) use ($factory)
+{
+	$user = $factory->raw(App\Gazzete\User::class);
+	$author = ['role_id' => \App\Gazzete\Role::author()->id];
+
+	return array_merge($user, $author);
+});
+
+$factory->defineAs(App\Gazzete\User::class, 'user_editor', function ($faker) use ($factory)
+{
+	$user = $factory->raw(App\Gazzete\User::class);
+	$author = ['role_id' => \App\Gazzete\Role::editor()->id];
+
+	return array_merge($user, $author);
+});
+
+$factory->defineAs(App\Gazzete\User::class, 'user_contributor', function ($faker) use ($factory)
+{
+	$user = $factory->raw(App\Gazzete\User::class);
+	$author = ['role_id' => \App\Gazzete\Role::contributor()->id];
+
+	return array_merge($user, $author);
+});
+
+$factory->defineAs(App\Gazzete\User::class, 'user_subscriber', function ($faker) use ($factory)
+{
+	$user = $factory->raw(App\Gazzete\User::class);
+	$author = ['role_id' => \App\Gazzete\Role::subscriber()->id];
+
+	return array_merge($user, $author);
+});
+
 
 $factory->define(App\Gazzete\Role::class, function (Faker\Generator $faker)
 {
@@ -38,7 +80,8 @@ $factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 {
 	$category = factory(App\Gazzete\Category::class)->create();
 	$author = factory(App\Gazzete\User::class)->create();
-	$author->assignRole(App\Gazzete\Role::author());
+
+	factory(App\Gazzete\User::class, 'user_author')->create();
 	$title = $faker->name;
 	$content = "<p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p>";
 

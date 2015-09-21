@@ -1,8 +1,15 @@
-## Gazzete Web App
+# Gazzete Web App
 
 ## Installation
 - [BowerPHP][bower_php_link]
 - [Composer][composer_link]. Install back-end libraries.
+
+## Summary of Roles
+- Administrator – somebody who has access to all features of below roles, as well editing account users.
+- Editor – somebody who can publish and manage posts including the posts of other users.
+- Author – somebody who can publish and manage their own posts.
+- Contributor – somebody who can write and manage their own posts but cannot publish them.
+- Subscriber – somebody who can only manage their profile, upvoting, and commenting on posts.
 
 ## Developers
 ### Tests
@@ -10,7 +17,13 @@ Gazzete Web App is build the TDD way. We first write functional tests, then inte
 #### Database 
 > Use a separate database for tests.  
 
-- `psql -U homestead -h localhost` # password: secret
+##### Useful commands for psql
+- Login to psql: `psql -U homestead -h localhost` # password: secret
+- List all databases `\l`
+- Create database for app `CREATE DATABASE gazzete`
+- Create database for tests `CREATE DATABASE gazzete_testing` > REQUIRED!
+- Select database `\c gazzete`
+- List all tables on the selected database `\dt`
 - `create gazzete database` && `create gazzete_testing database`
 #### TODO
 - Use [selenium][selenium_link] for front-end testing:

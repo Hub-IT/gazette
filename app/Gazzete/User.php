@@ -37,25 +37,23 @@ class User extends Model implements AuthenticatableContract,
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-	public function assignRole($role)
+	public function role()
 	{
-		$this->roles()->attach($role);
-
-		return $this;
-	}
-
-	public function roles()
-	{
-		return $this->belongsToMany('App\Gazzete\Role')->withTimestamps();
-	}
-
-	public function hasRole($role)
-	{
-		return in_array($role->name, array_column($this->roles()->get()->toArray(), 'name'));
+		return $this->belongsTo('App\Gazzete\Role');
 	}
 
 	public function posts()
 	{
 		return $this->belongsToMany('App\Gazzete\Post')->withTimestamps();
+	}
+
+	public function assignRole($role)
+	{
+		return $this->role()->associate($role);
+	}
+
+	public function hasRole($role)
+	{
+		return $this->role->name === $role;
 	}
 }

@@ -16,19 +16,16 @@ class UserTest extends \TestCase
 	/** @test */
 	public function it_checks_user_role()
 	{
-		$user = factory(\App\Gazzete\User::class)->create();
+		$administrator = factory(\App\Gazzete\User::class, 'user_administrator')->create();
+		$editor = factory(\App\Gazzete\User::class, 'user_editor')->create();
+		$author = factory(\App\Gazzete\User::class, 'user_author')->create();
+		$contributor = factory(\App\Gazzete\User::class, 'user_contributor')->create();
+		$subscriber = factory(\App\Gazzete\User::class, 'user_subscriber')->create();
 
-		$this->assertFalse($user->hasRole(Role::administrator()));
-		$this->assertFalse($user->hasRole(Role::author()));
-
-		$user->assignRole(Role::administrator())->save();
-
-		$this->assertTrue($user->hasRole(Role::administrator()));
-		$this->assertFalse($user->hasRole(Role::author()));
-
-		$user->assignRole(Role::author());
-
-		$this->assertTrue($user->hasRole(Role::administrator()));
-		$this->assertTrue($user->hasRole(Role::author()));
+		$this->assertTrue($administrator->hasRole(Role::ADMINISTRATOR));
+		$this->assertTrue($editor->hasRole(Role::EDITOR));
+		$this->assertTrue($author->hasRole(Role::AUTHOR));
+		$this->assertTrue($contributor->hasRole(Role::CONTRIBUTOR));
+		$this->assertTrue($subscriber->hasRole(Role::SUBSCRIBER));
 	}
 }
