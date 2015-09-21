@@ -51,6 +51,7 @@ $factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 		'author_id'         => $author->id,
 		'slug'              => Str::slug($title),
 		'header_background' => $faker->imageUrl(1555, 1037),
+		'published'         => $faker->boolean,
 	];
 });
 

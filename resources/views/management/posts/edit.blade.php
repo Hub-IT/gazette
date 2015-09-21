@@ -14,7 +14,7 @@
             @include('management.posts._form')
 
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Update</button>
+                {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}

@@ -10,7 +10,6 @@ use App\Gazzete\Post;
 use App\Gazzete\Role;
 use App\Gazzete\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Symfony\Component\DomCrawler\Form;
 use TestCase;
 
 class PostsTest extends TestCase
@@ -18,7 +17,36 @@ class PostsTest extends TestCase
 	use DatabaseMigrations;
 
 	/** @test */
-	public function it_reads_post_create()
+	public function it_reads_posts_index()
+	{
+		$post = factory(Post::class)->create();
+		$user = factory(User::class)->create();
+		$user->assignRole(Role::author());
+
+		$this->actingAs($user)
+			->visit(route('management.home'))
+			->click('posts-index')
+			->seePageIs(route('management.posts.index'))
+			->see('All Posts')
+			->see('Title')
+			->see($post->title)
+			->see('Summary')
+			->see('Author')
+			->see($post->author->name)
+			->see('Category')
+			->see($post->category->name)
+			->see(substr($post->summary, 0, 23))
+			->see('Published')
+			->see('No')
+			->see('Actions')
+			->see(link_to_route('posts.show', 'Show', $post->slug, ["class" => "btn btn-info btn-flat", 'target' => '_blank']))
+			->see(link_to_route('management.posts.edit', 'Edit', $post->slug, ["class" => "btn btn-primary btn-flat"]))
+			->see('<form method="POST" action="' . route("management.posts.destroy", $post) . '" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE">')
+			->see('<input class="btn btn-danger btn-flat" type="submit" value="Delete">');
+	}
+
+	/** @test */
+	public function it_reads_posts_create()
 	{
 		$user = factory(User::class)->create();
 		$user->assignRole(Role::author())->save();
@@ -41,7 +69,7 @@ class PostsTest extends TestCase
 			->see("<h3 class='box-title'>Content")
 			->see("<small>Simple and fast</small>")
 			->see('<textarea class="textarea" placeholder="Write the article here"')
-			->see('<button class="btn btn-primary" type="button">Create</button>');
+			->see('<input class="btn btn-primary" type="submit" value="Create">');
 	}
 
 	/** @test */
@@ -61,11 +89,5 @@ class PostsTest extends TestCase
 			->type($post->content, 'content')
 			->press('Create')
 			->see('Post created.');
-	}
-
-	/** @test */
-	public function it_requests_authorization()
-	{
-
 	}
 }

@@ -30,11 +30,6 @@ class ContactRequestsTest extends TestCase
 		$this->actingAs($user)
 			->visit(route('management.home'))
 			->click('contact-requests-index')
-			->seePageIs(route('management.contact-requests.index'));
-
-		# Direct access
-		$this->actingAs($user)
-			->visit(route('management.contact-requests.index'))
 			->seePageIs(route('management.contact-requests.index'))
 			->see('All Contact Requests')
 			->see('Name')

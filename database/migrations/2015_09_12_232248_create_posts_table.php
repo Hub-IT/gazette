@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
 			$table->longText('content');
 			$table->string('slug')->unique();
 			$table->string('header_background');
+			$table->boolean('published')->default(false);
 			$table->timestamps();
 
 			$table->integer('author_id')->unsigned()->index();

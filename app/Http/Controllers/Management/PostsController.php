@@ -13,6 +13,7 @@ use Laracasts\Flash\Flash;
 class PostsController extends BaseController
 {
 	protected $postRepository;
+
 	protected $categoryRepository;
 
 	public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
@@ -22,6 +23,18 @@ class PostsController extends BaseController
 		$this->postRepository = $postRepository;
 
 		$this->categoryRepository = $categoryRepository;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		$posts = $this->postRepository->all();
+
+		return view('management.posts.index', compact('posts'));
 	}
 
 	/**
@@ -74,4 +87,5 @@ class PostsController extends BaseController
 
 		return view('management.posts.edit', compact('post', 'categories'));
 	}
+
 }

@@ -19,6 +19,10 @@
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li>
+                        <a href="{!! route('management.posts.index') !!}" id="posts-index">
+                            <i class="fa fa-list"></i> List</a>
+                    </li>
+                    <li>
                         <a href="{!! route('management.posts.create') !!}" id="posts-create">
                             <i class="fa fa-circle-o"></i> Create</a>
                     </li>
