@@ -33,7 +33,7 @@
                                 <td>{{ $post->published ? 'Yes' : 'No' }}</td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route' =>
-                                        ['management.posts.destroy', $post]])!!}
+                                        ['management.posts.destroy', $post->slug]])!!}
 
                                     {!! link_to_route('posts.show', 'Show', $post->slug,
                                         ["class" => "btn btn-info btn-flat", 'target' => '_blank']) !!}

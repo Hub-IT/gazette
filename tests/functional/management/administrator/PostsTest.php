@@ -19,9 +19,9 @@ class PostsTest extends TestCase
 	public function it_reads_posts_index()
 	{
 		$post = factory(Post::class)->create();
-		$user = factory(User::class, 'user_administrator')->create();
+		$administrator = factory(User::class, 'user_administrator')->create();
 
-		$this->actingAs($user)
+		$this->actingAs($administrator)
 			->visit(route('management.home'))
 			->click('posts-index')
 			->seePageIs(route('management.posts.index'))
@@ -46,9 +46,9 @@ class PostsTest extends TestCase
 	/** @test */
 	public function it_reads_posts_create()
 	{
-		$user = factory(User::class, 'user_administrator')->create();
+		$administrator = factory(User::class, 'user_administrator')->create();
 
-		$this->actingAs($user)
+		$this->actingAs($administrator)
 			->visit(route('management.home'))
 			->click('posts-create')
 			->seePageIs(route('management.posts.create'))
@@ -72,10 +72,10 @@ class PostsTest extends TestCase
 	/** @test */
 	public function it_creates_a_post()
 	{
-		$user = factory(User::class, 'user_administrator')->create();
+		$administrator = factory(User::class, 'user_administrator')->create();
 		$post = factory(Post::class)->make();
 
-		$this->actingAs($user)
+		$this->actingAs($administrator)
 			->visit(route('management.posts.create'))
 			->type($post->title, 'title')
 			->type($post->summary, 'summary')
@@ -89,9 +89,14 @@ class PostsTest extends TestCase
 	/** @test */
 	public function it_destroys_a_post()
 	{
-		$user = factory(User::class, 'user_administrator')->create();
-		$post = factory(Post::class)->create();
+		$administrator = factory(User::class, 'user_administrator')->create();
+		factory(Post::class)->create();
 
-
+		$this->actingAs($administrator)
+			->visit(route('management.posts.index'))
+			->press('Delete')
+			->see('Are you sure to proceed?')
+			->seePageIs(route('management.posts.index'))
+			->see('Post successfully deleted.');
 	}
 }

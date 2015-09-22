@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Rizart Dokollari <r.dokollari@gmail.com>
+ * @since 22/10/2015
+ */
 namespace App\Http\Controllers\Management;
 
 use App\Gazzete\Post;
@@ -88,4 +92,15 @@ class PostsController extends BaseController
 		return view('management.posts.edit', compact('post', 'categories'));
 	}
 
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param $post
+	 * @return Response
+	 */
+	public function destroy($post)
+	{
+		$this->postRepository->delete($post);
+	}
 }

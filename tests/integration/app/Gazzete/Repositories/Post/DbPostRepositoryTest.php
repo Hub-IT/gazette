@@ -1,7 +1,6 @@
 <?php
 use App\Gazzete\Post;
 use App\Gazzete\Repositories\Post\DbPostRepository;
-use App\Gazzete\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
@@ -92,5 +91,28 @@ class DbPostRepositoryTest extends \TestCase
 		$this->dbPostRepository->save($post);
 
 		$this->seeInDatabase('posts', $post);
+	}
+
+	/** @test */
+	public function it_destroys_a_post()
+	{
+		$post = factory(App\Gazzete\Post::class)->create();
+
+		$postId = $post->id;
+
+		$post = ['title'             => $post->title,
+		         'summary'           => $post->summary,
+		         'content'           => $post->content,
+		         'minutes_read'      => $post->minutes_read,
+		         'slug'              => $post->slug,
+		         'header_background' => $post->header_background,
+		         'author_id'         => $post->author_id,
+		         'category_id'       => $post->category_id];
+
+		$this->seeInDatabase('posts', $post);
+
+		$this->dbPostRepository->destroyById($postId);
+
+		$this->notSeeInDatabase('posts', $post);
 	}
 }

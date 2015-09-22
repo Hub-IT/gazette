@@ -59,4 +59,16 @@ abstract class DbRepository
 
 		return $this;
 	}
+
+	/**
+	 * Destroy model from database.
+	 *
+	 * @param $id
+	 * @return mixed
+	 */
+	public function destroyById($id)
+	{
+		return $this->model->find($id)->delete();
+	}
+
 }

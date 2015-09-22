@@ -25,4 +25,11 @@ interface PostRepository
 	 */
 	public function getLatest($total = 10);
 
+	/**
+	 * Destroy model from database.
+	 *
+	 * @param $id
+	 * @return mixed
+	 */
+	public function destroyById($id);
 }
