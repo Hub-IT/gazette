@@ -17,7 +17,7 @@ class DestroyPostRequest extends Request
 	{
 		$user = Auth::user();
 
-		if ( $user->hasRole(Role::CONTRIBUTOR) || $user->hasRole(Role::SUBSCRIBER) )
+		if ( $user->hasRole(Role::SUBSCRIBER) )
 		{
 			Flash::error('You do not have the necessary privileges to delete a post');
 

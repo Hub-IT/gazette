@@ -39,8 +39,8 @@ class PostsTest extends TestCase
 			->see('Actions')
 			->see(link_to_route('posts.show', 'Show', $post->slug, ["class" => "btn btn-info btn-flat", 'target' => '_blank']))
 			->see(link_to_route('management.posts.edit', 'Edit', $post->slug, ["class" => "btn btn-primary btn-flat"]))
-			->see('<form method="POST" action="' . route("management.posts.destroy", $post) . '" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE">')
-			->see('<input class="btn btn-danger btn-flat" type="submit" value="Delete">');
+			->see('<form method="POST" action="' . route("management.posts.destroy", $post->slug) . '" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE">')
+			->see('<input class="confirm btn btn-danger btn-flat" type="submit" value="Delete">');
 	}
 
 	/** @test */

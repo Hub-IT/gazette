@@ -105,23 +105,25 @@ class PostsController extends BaseController
 	{
 		$user = Auth::user();
 
-		if ( ! $user->hasRole(Role::ADMINISTRATOR) && ! $user->hasRole(Role::EDITOR)
-			&& $user->hasRole(Role::AUTHOR) && $post->author->id !== $user->id
+		if ( $user->hasRole(Role::ADMINISTRATOR) || $user->hasRole(Role::EDITOR)
+			|| ($user->hasRole(Role::AUTHOR) && $post->author->id === $user->id)
+			|| ($user->hasRole(Role::CONTRIBUTOR) && $post->author->id === $user->id && ! $post->published)
 		)
 		{
-			Flash::error('You do not have the necessary privileges to delete a post');
+			if ( $this->postRepository->destroyById($post->id) )
+			{
+				Flash::success('Post successfully deleted.');
+
+				return redirect()->route('management.posts.index');
+			}
+
+			Flash::error('Something went wrong.');
+		} else
+		{
+			Flash::error('You do not have the necessary privileges to delete a post.');
 
 			return redirect()->back();
 		}
-
-		if ( $this->postRepository->destroyById($post->id) )
-		{
-			Flash::success('Post successfully deleted.');
-
-			return redirect()->route('management.posts.index');
-		}
-
-		Flash::error('Something went wrong.');
 
 		return redirect()->back();
 
