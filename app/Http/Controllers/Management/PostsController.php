@@ -101,6 +101,13 @@ class PostsController extends BaseController
 	 */
 	public function destroy($post)
 	{
-		$this->postRepository->delete($post);
+		if ( $this->postRepository->destroyById($post->id) )
+		{
+			Flash::success('Post successfully deleted.');
+
+			return redirect()->route('management.posts.index');
+		}
+
+		return redirect()->back();
 	}
 }

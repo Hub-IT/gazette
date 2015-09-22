@@ -95,7 +95,7 @@ class PostsTest extends TestCase
 		$this->actingAs($administrator)
 			->visit(route('management.posts.index'))
 			->press('Delete')
-			->see('Are you sure to proceed?')
+			->see('Are you sure want to proceed?')
 			->seePageIs(route('management.posts.index'))
 			->see('Post successfully deleted.');
 	}
