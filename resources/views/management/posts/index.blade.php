@@ -41,7 +41,7 @@
                                     {!! link_to_route('management.posts.edit', 'Edit', $post->slug,
                                         ["class" => "btn btn-primary btn-flat"]) !!}
 
-                                    {!! Form::submit("Delete", ['class' => 'btn btn-danger btn-flat']) !!}
+                                    {!! Form::submit("Delete", ['class' => 'confirm btn btn-danger btn-flat']) !!}
 
                                     {!! Form::close() !!}
                                 </td>

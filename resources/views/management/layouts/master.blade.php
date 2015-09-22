@@ -62,7 +62,7 @@
 <script src='{!! url("vendor/admin-lte/plugins/fastclick/fastclick.min.js") !!}'></script>
 <script src='{!! url("vendor/pnotify/src/pnotify.core.min.js") !!}'></script>
 <link href='{!! url("vendor/pnotify/src/pnotify.core.css") !!}' rel='stylesheet' type='text/css'/>
-{{--<script src='{!! url("vendor/pnotify/src/pnotify.confirm.min.js") !!}'></script>--}}
+<script src='{!! url("vendor/pnotify/src/pnotify.confirm.min.js") !!}'></script>
 <script src='{!! url("vendor/admin-lte/dist/js/app.min.js") !!}'></script>
 @yield('scripts')
 @include('flash::pnotify')
