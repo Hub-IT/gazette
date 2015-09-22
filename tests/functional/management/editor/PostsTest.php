@@ -6,8 +6,8 @@
 
 namespace tests\functional\management\editor;
 
-use App\Gazzete\Post;
-use App\Gazzete\User;
+use App\Gazzete\Models\Post;
+use App\Gazzete\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 

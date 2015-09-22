@@ -51,7 +51,7 @@
 
         <div class="col-md-6 form-group has-feedback checkbox icheck @if($errors->first('publish')) has-error @endif">
             <label>
-                {!! Form::checkbox('publish') !!} Publish </label>
+                {!! Form::checkbox('published') !!} Publish </label>
         </div>
     </div>
 </div>

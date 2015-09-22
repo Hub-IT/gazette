@@ -6,10 +6,10 @@
  */
 namespace App\Http\Controllers\Management;
 
-use App\Gazzete\Post;
+use App\Gazzete\Models\Post;
+use App\Gazzete\Models\Role;
 use App\Gazzete\Repositories\Category\CategoryRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
-use App\Gazzete\Role;
 use App\Http\Requests;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;

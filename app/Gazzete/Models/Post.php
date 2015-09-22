@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Gazzete;
+namespace App\Gazzete\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,7 @@ class Post extends Model
 	 */
 	public function author()
 	{
-		return $this->belongsTo('App\Gazzete\User');
+		return $this->belongsTo('App\Gazzete\Models\User');
 	}
 
 	public function assignCategory($category)
@@ -31,6 +31,6 @@ class Post extends Model
 	 */
 	public function category()
 	{
-		return $this->belongsTo('App\Gazzete\Category');
+		return $this->belongsTo('App\Gazzete\Models\Category');
 	}
 }

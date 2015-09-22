@@ -1,9 +1,9 @@
 <?php
 namespace App\Gazzete\Repositories\Post;
 
-use App\Gazzete\Post;
+use App\Gazzete\Models\Post;
+use App\Gazzete\Models\User;
 use App\Gazzete\Repositories\DbRepository;
-use App\Gazzete\User;
 use Illuminate\Support\Str;
 
 /**

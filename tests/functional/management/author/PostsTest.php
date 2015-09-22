@@ -6,9 +6,9 @@
 
 namespace tests\functional\management\author;
 
-use App\Gazzete\Post;
-use App\Gazzete\Role;
-use App\Gazzete\User;
+use App\Gazzete\Models\Post;
+use App\Gazzete\Models\Role;
+use App\Gazzete\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -65,7 +65,7 @@ class PostsTest extends TestCase
 			->see('<input class="form-control" placeholder="Recommended but not required. Size: 1555x1037 px." name="header_background" type="text" id="header_background">')
 			->see('<label for="category_id">Category</label>')
 			->see('<select class="select2 form-control" style="width: 100%" id="category_id" name="category_id"><option selected="selected" value="">Select a category</option>')
-			->see('<input name="publish" type="checkbox" value="1"> Publish')
+			->see('<input name="published" type="checkbox" value="1"> Publish')
 			->see("<h3 class='box-title'>Content")
 			->see("<small>Simple and fast</small>")
 			->see('<textarea class="textarea" placeholder="Write the article here"')

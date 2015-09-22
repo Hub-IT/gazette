@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Gazzete\Post;
+use App\Gazzete\Models\Post;
 use App\Gazzete\Repositories\Post\PostRepository;
 use App\Gazzete\Transformers\PostTransformer;
 use App\Http\Controllers\Api\ApiController;

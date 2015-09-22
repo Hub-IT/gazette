@@ -6,7 +6,6 @@
 
 namespace tests\integration\app\Gazzete\Repositories\Category;
 
-
 use App\Gazzete\Repositories\Category\DbCategoryRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
@@ -28,7 +27,7 @@ class DbCategoryRepositoryTest extends TestCase
 	/** @test */
 	public function it_returns_all()
 	{
-		$expectedCategories = factory(\App\Gazzete\Category::class, 2)->create();
+		$expectedCategories = factory(\App\Gazzete\Models\Category::class, 2)->create();
 
 		$actualCategories = $this->dbCategoryRepository->all();
 

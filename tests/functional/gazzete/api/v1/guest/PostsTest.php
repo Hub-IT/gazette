@@ -15,7 +15,7 @@ class PostsTest extends TestCase
 	/** @test */
 	public function it_returns_posts()
 	{
-		$posts = factory(App\Gazzete\Post::class, 2)->create();
+		$posts = factory(App\Gazzete\Models\Post::class, 2)->create();
 
 		$this->get(route('api.v1.posts.index'))
 			->seeJsonEquals([

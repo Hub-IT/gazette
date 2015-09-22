@@ -5,7 +5,7 @@
  */
 namespace tests\functional\management\administrator;
 
-use App\Gazzete\User;
+use App\Gazzete\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -16,21 +16,20 @@ class LayoutTest extends TestCase
 {
 	use DatabaseMigrations;
 
+
 	/** @test */
 	public function it_reads_sidebar()
 	{
-		$user = factory(User::class)->create();
+		$administrator = factory(User::class)->create();
 
-		$this->actingAs($user);
-
-		# An user not having a role of admin, should be able to view the next contents.
-//			->visit(route('management.home'))
-//			->dontSee('<img src="' . $user->avatar . '" class="img-circle" alt="User Image"/>')
-//			->dontSee('<p>' . $user->name . '</p>
-//                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>')
-//			->dontSee('<a href="#"> <i class="fa fa-dashboard"></i> <span>Posts</span>')
-//			->dontSee('<li><a href="' . route('management.posts.create') . '"><i class="fa fa-circle-o"></i> Create</a>');
-
+		$this->actingAs($administrator)
+			->visit(route('management.home'))
+			->see('<img src="' . $administrator->avatar . '" class="img-circle" alt="User Image"/>')
+			->see('<p>' . $administrator->name . '</p>')
+			->see('<a href="#"> <i class="fa fa-newspaper-o"></i> <span>Posts</span>')
+			->see('<a href="' . route('management.posts.create') . '" id="posts-create">')
+			->see('<a href="#"> <i class="fa fa-envelope"></i> <span>Contact Requests</span>')
+			->see('<a href="' . route('management.contact-requests.index') . '" id="contact-requests-index">');
 	}
 
 }

@@ -15,7 +15,7 @@ class PostTest extends TestCase
 	/** @test */
 	public function it_reads_post()
 	{
-		$post = factory(App\Gazzete\Post::class)->create();
+		$post = factory(App\Gazzete\Models\Post::class)->create();
 
 		$this->visit(route('posts.show', $post->slug))
 			->seePageIs(route('posts.show', $post->slug))->see('POSTS')
@@ -33,7 +33,7 @@ class PostTest extends TestCase
 	/** @test */
 	public function it_reads_categories()
 	{
-		$categories = factory(App\Gazzete\Category::class, 3)->create();
+		$categories = factory(App\Gazzete\Models\Category::class, 3)->create();
 
 		$this->visit(route('home'))
 			->seePageIs(route('home'))

@@ -7,7 +7,7 @@
 namespace App\Gazzete\Repositories\Contact;
 
 
-use App\Gazzete\ContactRequest;
+use App\Gazzete\Models\ContactRequest;
 use App\Gazzete\Repositories\DbRepository;
 
 class DbContactRepository extends DbRepository implements ContactRepository

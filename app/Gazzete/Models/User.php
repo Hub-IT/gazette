@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Gazzete;
+namespace App\Gazzete\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -37,19 +37,19 @@ class User extends Model implements AuthenticatableContract,
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-	public function role()
-	{
-		return $this->belongsTo('App\Gazzete\Role');
-	}
-
 	public function posts()
 	{
-		return $this->belongsToMany('App\Gazzete\Post')->withTimestamps();
+		return $this->belongsToMany('App\Gazzete\Models\Post')->withTimestamps();
 	}
 
 	public function assignRole($role)
 	{
 		return $this->role()->associate($role);
+	}
+
+	public function role()
+	{
+		return $this->belongsTo('App\Gazzete\Models\Role');
 	}
 
 	public function hasRole($role)

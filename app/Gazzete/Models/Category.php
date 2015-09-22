@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Gazzete;
+namespace App\Gazzete\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

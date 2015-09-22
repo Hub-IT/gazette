@@ -2,7 +2,6 @@
 
 namespace App\Gazzete\Repositories\Post;
 
-
 /**
  * @author  Rizart Dokollari <r.dokollari@gmail.com>
  * @since   13/9/2015

@@ -6,7 +6,7 @@
 
 namespace App\Http\Controllers\Gazzete;
 
-use App\Gazzete\ContactRequest;
+use App\Gazzete\Models\ContactRequest;
 use App\Gazzete\Repositories\Category\CategoryRepository;
 use App\Gazzete\Repositories\Contact\ContactRepository;
 use App\Gazzete\Repositories\Post\PostRepository;

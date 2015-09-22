@@ -6,7 +6,7 @@
 
 namespace tests\integration\app\Gazzete\Repositories;
 
-use App\Gazzete\Role;
+use App\Gazzete\Models\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserTest extends \TestCase
@@ -16,11 +16,11 @@ class UserTest extends \TestCase
 	/** @test */
 	public function it_checks_user_role()
 	{
-		$administrator = factory(\App\Gazzete\User::class, 'user_administrator')->create();
-		$editor = factory(\App\Gazzete\User::class, 'user_editor')->create();
-		$author = factory(\App\Gazzete\User::class, 'user_author')->create();
-		$contributor = factory(\App\Gazzete\User::class, 'user_contributor')->create();
-		$subscriber = factory(\App\Gazzete\User::class, 'user_subscriber')->create();
+		$administrator = factory(\App\Gazzete\Models\User::class, 'user_administrator')->create();
+		$editor = factory(\App\Gazzete\Models\User::class, 'user_editor')->create();
+		$author = factory(\App\Gazzete\Models\User::class, 'user_author')->create();
+		$contributor = factory(\App\Gazzete\Models\User::class, 'user_contributor')->create();
+		$subscriber = factory(\App\Gazzete\Models\User::class, 'user_subscriber')->create();
 
 		$this->assertTrue($administrator->hasRole(Role::ADMINISTRATOR));
 		$this->assertTrue($editor->hasRole(Role::EDITOR));

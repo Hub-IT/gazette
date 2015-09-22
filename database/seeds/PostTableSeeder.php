@@ -1,6 +1,6 @@
 <?php
 
-use App\Gazzete\Role;
+use App\Gazzete\Models\Role;
 use Illuminate\Database\Seeder;
 
 class PostTableSeeder extends Seeder
@@ -12,9 +12,9 @@ class PostTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$authors = factory(App\Gazzete\User::class, 3)->create(['role_id' => Role::author()->id]);
+		$authors = factory(App\Gazzete\Models\User::class, 3)->create(['role_id' => Role::author()->id]);
 
-		$posts = factory(App\Gazzete\Post::class, 13)->create();
+		$posts = factory(App\Gazzete\Models\Post::class, 13)->create();
 
 		foreach ($posts as $post)
 		{

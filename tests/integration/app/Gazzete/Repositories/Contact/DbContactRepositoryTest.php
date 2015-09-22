@@ -26,13 +26,13 @@ class DbContactRepositoryTest extends TestCase
 	/** @test */
 	public function it_saves_contact()
 	{
-		$expectedContact = factory(\App\Gazzete\ContactRequest::class)->make();
+		$expectedContact = factory(\App\Gazzete\Models\ContactRequest::class)->make();
 
 		$this->dbContactRepository->save($expectedContact->toArray());
 
 		$this->seeInDatabase('contact_requests', ['name'         => $expectedContact->name,
-		                                  'email'        => $expectedContact->email,
-		                                  'phone_number' => $expectedContact->phone_number,
-		                                  'message'      => $expectedContact->message]);
+		                                          'email'        => $expectedContact->email,
+		                                          'phone_number' => $expectedContact->phone_number,
+		                                          'message'      => $expectedContact->message]);
 	}
 }

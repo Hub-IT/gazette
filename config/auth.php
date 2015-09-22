@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model'    => App\Gazzete\User::class,
+	'model'    => App\Gazzete\Models\User::class,
 
 	/*
 	|--------------------------------------------------------------------------

@@ -24,7 +24,7 @@
                     </li>
                     <li>
                         <a href="{!! route('management.posts.create') !!}" id="posts-create">
-                            <i class="fa fa-circle-o"></i> Create</a>
+                            <i class="fa fa-plus"></i> Create</a>
                     </li>
                 </ul>
             </li>

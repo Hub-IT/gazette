@@ -6,8 +6,7 @@
 
 namespace App\Gazzete\Repositories\Category;
 
-
-use App\Gazzete\Category;
+use App\Gazzete\Models\Category;
 use App\Gazzete\Repositories\DbRepository;
 
 class DbCategoryRepository extends DbRepository implements CategoryRepository

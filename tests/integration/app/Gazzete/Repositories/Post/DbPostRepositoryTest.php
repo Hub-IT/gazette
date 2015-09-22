@@ -1,5 +1,5 @@
 <?php
-use App\Gazzete\Post;
+use App\Gazzete\Models\Post;
 use App\Gazzete\Repositories\Post\DbPostRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -23,8 +23,8 @@ class DbPostRepositoryTest extends \TestCase
 	/** @test */
 	public function it_returns_latest_posts()
 	{
-		$expectedLatestPosts = factory(App\Gazzete\Post::class, 2)->create();
-		factory(App\Gazzete\Post::class)->create();
+		$expectedLatestPosts = factory(App\Gazzete\Models\Post::class, 2)->create();
+		factory(App\Gazzete\Models\Post::class)->create();
 
 		$actualLatestPosts = $this->dbPostRepository->getLatest(2);
 
@@ -45,8 +45,8 @@ class DbPostRepositoryTest extends \TestCase
 	/** @test */
 	public function it_assigns_author()
 	{
-		$post = factory(App\Gazzete\Post::class)->create();
-		$author = factory(App\Gazzete\User::class, 'user_author')->create();
+		$post = factory(App\Gazzete\Models\Post::class)->create();
+		$author = factory(App\Gazzete\Models\User::class, 'user_author')->create();
 
 		$actualPost = Post::find($post->id);
 		$post->assignAuthor($author)->save();
@@ -60,8 +60,8 @@ class DbPostRepositoryTest extends \TestCase
 	/** @test */
 	public function it_assigns_category()
 	{
-		$post = factory(App\Gazzete\Post::class)->create();
-		$expectedCategory = factory(App\Gazzete\Category::class)->create();
+		$post = factory(App\Gazzete\Models\Post::class)->create();
+		$expectedCategory = factory(App\Gazzete\Models\Category::class)->create();
 
 		$this->assertNotEquals($post->category->name, $expectedCategory->name);
 
@@ -75,7 +75,7 @@ class DbPostRepositoryTest extends \TestCase
 	/** @test */
 	public function it_creates_a_post()
 	{
-		$post = factory(App\Gazzete\Post::class)->make();
+		$post = factory(App\Gazzete\Models\Post::class)->make();
 
 		$post = ['title'             => $post->title,
 		         'summary'           => $post->summary,
@@ -96,7 +96,7 @@ class DbPostRepositoryTest extends \TestCase
 	/** @test */
 	public function it_destroys_a_post()
 	{
-		$post = factory(App\Gazzete\Post::class)->create();
+		$post = factory(App\Gazzete\Models\Post::class)->create();
 
 		$postId = $post->id;
 

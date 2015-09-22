@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Lang;
 use Laracasts\Flash\Flash;
-use Validator;
 
 class AuthController extends Controller
 {

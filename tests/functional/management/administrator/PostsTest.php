@@ -6,8 +6,8 @@
 
 namespace tests\functional\management\administrator;
 
-use App\Gazzete\Post;
-use App\Gazzete\User;
+use App\Gazzete\Models\Post;
+use App\Gazzete\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -62,11 +62,32 @@ class PostsTest extends TestCase
 			->see('<input class="form-control" placeholder="Recommended but not required. Size: 1555x1037 px." name="header_background" type="text" id="header_background">')
 			->see('<label for="category_id">Category</label>')
 			->see('<select class="select2 form-control" style="width: 100%" id="category_id" name="category_id"><option selected="selected" value="">Select a category</option>')
-			->see('<input name="publish" type="checkbox" value="1"> Publish')
+			->see('<input name="published" type="checkbox" value="1"> Publish')
 			->see("<h3 class='box-title'>Content")
 			->see("<small>Simple and fast</small>")
 			->see('<textarea class="textarea" placeholder="Write the article here"')
 			->see('<input class="btn btn-primary" type="submit" value="Create">');
+	}
+
+	/** @test */
+	public function it_reads_posts_edit()
+	{
+		$administrator = factory(User::class, 'user_administrator')->create();
+		factory(Post::class)->create(['published' => true]);
+		$post = factory(Post::class)->create(['published' => true]);
+
+		$this->actingAs($administrator)
+			->visit(route('management.posts.edit', $post->slug))
+			->see('<title>Edit Post &middot; Gazzete CMS</title>')
+			->see('Meta')
+			->see($post->title)
+			->see($post->summary)
+			->see($post->header_background)
+			->seeIsSelected('category_id', "{$post->category->id}")
+			->seeIsChecked('published')
+			->see($post->content)
+			->see('<input class="btn btn-primary" type="submit" value="Update">');
+
 	}
 
 	/** @test */

@@ -8,7 +8,6 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\Response as HttpResponses;
 
-
 abstract class ApiController extends Controller
 {
 	protected $statusCode = HttpResponses::HTTP_OK;

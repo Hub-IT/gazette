@@ -5,7 +5,7 @@
  */
 namespace tests\functional\management\author;
 
-use App\Gazzete\User;
+use App\Gazzete\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
