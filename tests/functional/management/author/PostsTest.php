@@ -90,4 +90,18 @@ class PostsTest extends TestCase
 			->press('Create')
 			->see('Post created.');
 	}
+
+	/** @test */
+	public function it_destroys_a_post()
+	{
+		$author = factory(User::class, 'user_author')->create();
+		factory(Post::class)->create();
+
+		$this->actingAs($author)
+			->visit(route('management.posts.index'))
+			->press('Delete')
+			->see('Are you sure want to proceed?')
+			->seePageIs(route('management.posts.index'))
+			->see('Post successfully deleted.');
+	}
 }

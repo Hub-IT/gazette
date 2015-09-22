@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Management;
 use App\Gazzete\Post;
 use App\Gazzete\Repositories\Category\CategoryRepository;
 use App\Gazzete\Repositories\Post\PostRepository;
+use App\Gazzete\Role;
 use App\Http\Requests;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -101,12 +102,19 @@ class PostsController extends BaseController
 	 */
 	public function destroy($post)
 	{
-		if ( $this->postRepository->destroyById($post->id) )
-		{
-			Flash::success('Post successfully deleted.');
+		$user = Auth::user();
 
-			return redirect()->route('management.posts.index');
+		if ( $user->hasRole(Role::ADMINISTRATOR) || $user->hasRole(Role::EDITOR) )
+		{
+			if ( $this->postRepository->destroyById($post->id) )
+			{
+				Flash::success('Post successfully deleted.');
+
+				return redirect()->route('management.posts.index');
+			}
 		}
+
+		Flash::error('Something went wrong.');
 
 		return redirect()->back();
 	}
