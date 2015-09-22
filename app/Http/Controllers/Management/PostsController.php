@@ -126,6 +126,18 @@ class PostsController extends BaseController
 		}
 
 		return redirect()->back();
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param Requests\UpdatePostRequest $updatePostRequest
+	 * @param Post $post
+	 * @return Response
+	 * @internal param Request $request
+	 */
+	public function update(Requests\UpdatePostRequest $updatePostRequest, Post $post)
+	{
 
 	}
 }

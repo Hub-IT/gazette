@@ -87,8 +87,8 @@ class PostsTest extends TestCase
 			->seeIsChecked('published')
 			->see($post->content)
 			->see('<input class="btn btn-flat btn-primary" type="submit" value="Update">')
-			->see(link_to_route('posts.show', 'Show', $post->slug, ['class' => 'btn btn-sm bg-maroon btn-flat margin',
-			'target' => '_blank']));
+			->see(link_to_route('posts.show', 'Show', $post->slug, ['class'  => 'btn btn-sm bg-maroon btn-flat margin',
+			                                                        'target' => '_blank']));
 
 		factory(Post::class)->create(['published' => true]);
 		$post = factory(Post::class)->create(['published' => false]);
@@ -113,6 +113,30 @@ class PostsTest extends TestCase
 			->type($post->content, 'content')
 			->press('Create')
 			->see('Post created.');
+	}
+
+	/** @test */
+	public function it_updates_a_post()
+	{
+		$administrator = factory(User::class, 'user_administrator')->create();
+		$post = factory(Post::class)->create();
+		$newPost = factory(Post::class)->make(['published' => true]);
+
+		$this->actingAs($administrator)
+			->visit(route('management.posts.edit', $post->slug))
+			->type($newPost->title, 'title')
+			->type($newPost->summary, 'summary')
+			->type($newPost->header_background, 'header_background')
+			->select($newPost->category->id, 'category_id')
+			->type($newPost->content, 'content')
+			->press('Update')
+			->see('Post updated.')
+			->see($newPost->title)
+			->see($newPost->summary)
+			->see($newPost->header_background)
+			->seeIsSelected('category_id', $newPost->category->id)
+			->seeIsChecked('published')
+			->see($newPost->content);
 	}
 
 	/** @test */

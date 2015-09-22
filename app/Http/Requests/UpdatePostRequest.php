@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class StorePostRequest extends Request
+class UpdatePostRequest extends Request
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -11,7 +11,7 @@ class StorePostRequest extends Request
 	 */
 	public function authorize()
 	{
-		return true;
+		return false;
 	}
 
 	/**
@@ -28,7 +28,6 @@ class StorePostRequest extends Request
 			'content'           => 'required|min:10',
 			'minutes_read'      => 'numeric',
 			'header_background' => 'url',
-			'published'         => 'boolean',
 		];
 	}
 }
