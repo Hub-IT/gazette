@@ -23,6 +23,9 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
+
+        @include("flash::message")
+
         <p class="login-box-msg">Sign in to gain access</p>
 
         {!! Form::model(null, ['route' => 'management.auth.store']) !!}

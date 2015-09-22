@@ -4,7 +4,7 @@
  * @since   19/9/2015
  */
 
-namespace tests\functional\management\admin;
+namespace tests\functional\management\administrator;
 
 use App\Gazzete\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

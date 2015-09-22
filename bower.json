@@ -10,6 +10,7 @@
     "jpanelmenu": "^1.4",
     "jquery": "^2.1",
     "jquery-during-scroll": "~1.1",
+    "pnotify": "sciactive/pnotify#~2.1.0",
     "respond": "^1.4"
   }
 }

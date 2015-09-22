@@ -3,7 +3,7 @@
  * @author Rizart Dokollari <r.dokollari@gmail.com>
  * @since 12/10/2015
  */
-namespace tests\functional\management\admin;
+namespace tests\functional\management\administrator;
 
 use App\Gazzete\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

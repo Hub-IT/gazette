@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Laracasts\Flash\Flash;
 
 class AuthenticateManagement
 {
@@ -36,6 +37,8 @@ class AuthenticateManagement
 		if ( $this->auth->guest() )
 		{
 			if ( $request->ajax() ) return response('Unauthorized.', 401);
+
+			Flash::error('Authorization required.');
 
 			return redirect()->guest(route('management.auth.create'));
 		}
