@@ -79,9 +79,7 @@ $factory->define(App\Gazzete\Role::class, function (Faker\Generator $faker)
 $factory->define(App\Gazzete\Post::class, function ($faker) use ($factory)
 {
 	$category = factory(App\Gazzete\Category::class)->create();
-	$author = factory(App\Gazzete\User::class)->create();
-
-	factory(App\Gazzete\User::class, 'user_author')->create();
+	$author = factory(App\Gazzete\User::class, 'user_author')->create();
 	$title = $faker->name;
 	$content = "<p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p>";
 

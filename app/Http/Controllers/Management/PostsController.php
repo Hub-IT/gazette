@@ -98,24 +98,32 @@ class PostsController extends BaseController
 	 * Remove the specified resource from storage.
 	 *
 	 * @param $post
+	 * @param Requests\DestroyPostRequest $destroyPostRequest
 	 * @return Response
 	 */
-	public function destroy($post)
+	public function destroy($post, Requests\DestroyPostRequest $destroyPostRequest)
 	{
 		$user = Auth::user();
 
-		if ( $user->hasRole(Role::ADMINISTRATOR) || $user->hasRole(Role::EDITOR) )
+		if ( ! $user->hasRole(Role::ADMINISTRATOR) && ! $user->hasRole(Role::EDITOR)
+			&& $user->hasRole(Role::AUTHOR) && $post->author->id !== $user->id
+		)
 		{
-			if ( $this->postRepository->destroyById($post->id) )
-			{
-				Flash::success('Post successfully deleted.');
+			Flash::error('You do not have the necessary privileges to delete a post');
 
-				return redirect()->route('management.posts.index');
-			}
+			return redirect()->back();
+		}
+
+		if ( $this->postRepository->destroyById($post->id) )
+		{
+			Flash::success('Post successfully deleted.');
+
+			return redirect()->route('management.posts.index');
 		}
 
 		Flash::error('Something went wrong.');
 
 		return redirect()->back();
+
 	}
 }

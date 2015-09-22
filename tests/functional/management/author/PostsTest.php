@@ -95,7 +95,7 @@ class PostsTest extends TestCase
 	public function it_destroys_a_post()
 	{
 		$author = factory(User::class, 'user_author')->create();
-		factory(Post::class)->create();
+		factory(Post::class)->create(['author_id' => $author->id]);
 
 		$this->actingAs($author)
 			->visit(route('management.posts.index'))
