@@ -73,6 +73,35 @@ class PostsTest extends TestCase
 	}
 
 	/** @test */
+	public function it_reads_posts_edit()
+	{
+		$author = factory(User::class, 'user_author')->create();
+		factory(Post::class)->create(['published' => true]);
+		$post = factory(Post::class)->create(['published' => true, 'author_id' => $author->id]);
+
+		$this->actingAs($author)
+			->visit(route('management.posts.edit', $post->slug))
+			->see('<title>Edit Post &middot; Gazzete CMS</title>')
+			->see('Meta')
+			->see($post->title)
+			->see($post->summary)
+			->see($post->header_background)
+			->seeIsSelected('category_id', "{$post->category->id}")
+			->seeIsChecked('published')
+			->see($post->content)
+			->see('<input class="btn btn-flat btn-primary" type="submit" value="Update">')
+			->see(link_to_route('posts.show', 'Show', $post->slug, ['class' => 'btn btn-sm bg-maroon btn-flat margin',
+			'target' => '_blank']));
+
+		factory(Post::class)->create(['published' => true]);
+		$post = factory(Post::class)->create(['published' => false]);
+
+		$this->actingAs($author)
+			->visit(route('management.posts.edit', $post->slug))
+			->dontSee(link_to_route('posts.show', 'Show', $post->slug, ['class' => 'btn btn-sm bg-maroon btn-flat margin']));
+	}
+
+	/** @test */
 	public function it_creates_a_post()
 	{
 		$user = factory(User::class)->create();

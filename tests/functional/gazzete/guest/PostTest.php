@@ -45,11 +45,3 @@ class PostTest extends TestCase
 			->see($categories[2]->name);
 	}
 }
-
-
-
-
-
-
-
-

@@ -14,7 +14,9 @@
             @include('management.posts._form')
 
             <div class="box-footer">
-                {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Update', ['class' => 'btn btn-flat btn-primary']) !!}
+                {!! ! $post->published ? '': link_to_route('posts.show', 'Show', $post->slug,
+                    ['class' => 'btn btn-sm bg-maroon btn-flat margin', 'target' => '_blank']) !!}
             </div>
 
             {!! Form::close() !!}

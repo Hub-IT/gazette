@@ -86,8 +86,16 @@ class PostsTest extends TestCase
 			->seeIsSelected('category_id', "{$post->category->id}")
 			->seeIsChecked('published')
 			->see($post->content)
-			->see('<input class="btn btn-primary" type="submit" value="Update">');
+			->see('<input class="btn btn-flat btn-primary" type="submit" value="Update">')
+			->see(link_to_route('posts.show', 'Show', $post->slug, ['class' => 'btn btn-sm bg-maroon btn-flat margin',
+			'target' => '_blank']));
 
+		factory(Post::class)->create(['published' => true]);
+		$post = factory(Post::class)->create(['published' => false]);
+
+		$this->actingAs($administrator)
+			->visit(route('management.posts.edit', $post->slug))
+			->dontSee(link_to_route('posts.show', 'Show', $post->slug, ['class' => 'btn btn-sm bg-maroon btn-flat margin']));
 	}
 
 	/** @test */
