@@ -9,7 +9,7 @@
     <div class="row">
         <!-- left column -->
         <div class="col-md-12">
-            {!! Form::model($post, ['route' => 'management.posts.update', 'role' => 'form']) !!}
+            {!! Form::model($post, ['route' => 'management.posts.update', 'role' => 'form', 'method' => 'PUT']) !!}
 
             @include('management.posts._form')
 

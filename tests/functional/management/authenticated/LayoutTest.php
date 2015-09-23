@@ -5,7 +5,7 @@
  */
 namespace tests\functional\management\authenticated;
 
-use App\Gazzete\Models\User;
+use App\Gazette\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -23,10 +23,10 @@ class LayoutTest extends TestCase
 
 		$this->actingAs($user)
 			->visit(route('management.home'))
-			->see('<title>Home &middot; Gazzete CMS</title>')
+			->see('<title>Home &middot; Gazette CMS</title>')
 			->see('<a href="' . route('management.home') . '" class="logo">')
 			->see('<span class="logo-mini"><b>G</b>MS</span>')
-			->see('<span class="logo-lg"><b>Gazzete</b>MS</span> </a>')
+			->see('<span class="logo-lg"><b>Gazette</b>MS</span> </a>')
 			->see('<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">')
 			->see('<span class="hidden-xs">' . $user->name . '</span>')
 			->see('<img src="' . $user->avatar . '" class="user-image" alt="User Image"/>')
@@ -54,6 +54,6 @@ class LayoutTest extends TestCase
 			->visit(route('management.home'))
 			->see('<b>Version</b> 0.1.0')
 			->see('<strong>Copyright &copy; ' . date('Y') . '
-            <a href="https://github.com/Hub-IT/gazzete">Gazzete</a>.</strong> MIT License.');
+            <a href="https://github.com/Hub-IT/gazette">Gazette</a>.</strong> MIT License.');
 	}
 }

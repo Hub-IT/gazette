@@ -33,7 +33,7 @@ class ContactTest extends TestCase
 	/** @test */
 	public function it_sends_message()
 	{
-		$contact = factory(App\Gazzete\Models\ContactRequest::class)->make();
+		$contact = factory(App\Gazette\Models\ContactRequest::class)->make();
 
 		$this->visit(route('contact'))
 			->type($contact->name, 'name')

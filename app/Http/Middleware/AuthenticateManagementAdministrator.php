@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Gazzete\Role;
+use App\Gazette\Role;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 

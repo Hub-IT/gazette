@@ -20,7 +20,7 @@ class AuthTest extends TestCase
 	{
 		$this->visit(route('management.auth.create'))
 			->seePageIs(route('management.auth.create'))
-			->see('<a href="' . route('management.auth.create') . '"><b>Gazzete</b> Management System</a>')
+			->see('<a href="' . route('management.auth.create') . '"><b>Gazette</b> Management System</a>')
 			->see('Sign in to gain access')
 			->see('Email')
 			->see('Password')

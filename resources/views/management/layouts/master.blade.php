@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title') &middot; Gazzete CMS</title>
+    <title>@yield('title') &middot; Gazette CMS</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link href='{!! asset("management/favicon.ico") !!}' rel="icon">
@@ -51,7 +51,7 @@
             <b>Version</b> 0.1.0
         </div>
         <strong>Copyright &copy; {!! date('Y') !!}
-            <a href="https://github.com/Hub-IT/gazzete">Gazzete</a>.</strong> MIT License.
+            <a href="https://github.com/Hub-IT/gazette">Gazette</a>.</strong> MIT License.
     </footer>
 
 </div>

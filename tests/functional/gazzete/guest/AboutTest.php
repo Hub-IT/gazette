@@ -16,7 +16,7 @@ class AboutTest extends TestCase
 	{
 		$this->visit(route('about'))
 			->seePageIs(route('about'))
-			->see(asset('gazzete/img/default-about.jpg'));
+			->see(asset('gazette/img/default-about.jpg'));
 	}
 
 	/** @test */

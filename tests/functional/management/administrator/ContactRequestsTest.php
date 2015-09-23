@@ -6,12 +6,12 @@
 
 namespace tests\functional\management\administrator;
 
-use App\Gazzete\Models\Role;
+use App\Gazette\Models\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
 /**
- * Class ContactRequestsTest Test CRUD operations for gazzete users contact requests.
+ * Class ContactRequestsTest Test CRUD operations for gazette users contact requests.
  *
  * @package tests\functional\management\admin
  */
@@ -22,8 +22,8 @@ class ContactRequestsTest extends TestCase
 	/** @test */
 	public function it_reads_contacts_index()
 	{
-		$contactRequest = factory(\App\Gazzete\Models\ContactRequest::class)->create();
-		$user = factory(\App\Gazzete\Models\User::class)->create();
+		$contactRequest = factory(\App\Gazette\Models\ContactRequest::class)->create();
+		$user = factory(\App\Gazette\Models\User::class)->create();
 		$user->assignRole(Role::administrator());
 
 		# Access through sidebar

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Management;
 
-use App\Gazzete\Repositories\Contact\ContactRepository;
+use App\Gazette\Repositories\Contact\ContactRepository;
 use App\Http\Requests;
 use Illuminate\Http\Response;
 

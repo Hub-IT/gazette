@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Authentication &middot; Gazzete CMS</title>
+    <title>Authentication &middot; Gazette CMS</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link href='{!! url("vendor/admin-lte/bootstrap/css/bootstrap.min.css") !!}' rel='stylesheet' type='text/css'/>
@@ -19,7 +19,7 @@
 <body class="login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{!! route('management.auth.create') !!}"><b>Gazzete</b> Management System</a>
+        <a href="{!! route('management.auth.create') !!}"><b>Gazette</b> Management System</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

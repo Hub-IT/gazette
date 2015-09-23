@@ -4,9 +4,9 @@
  * @since   16/9/2015
  */
 
-namespace tests\integration\app\Gazzete\Repositories\Contact;
+namespace tests\integration\app\Gazette\Repositories\Contact;
 
-use App\Gazzete\Repositories\Contact\DbContactRepository;
+use App\Gazette\Repositories\Contact\DbContactRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -26,7 +26,7 @@ class DbContactRepositoryTest extends TestCase
 	/** @test */
 	public function it_saves_contact()
 	{
-		$expectedContact = factory(\App\Gazzete\Models\ContactRequest::class)->make();
+		$expectedContact = factory(\App\Gazette\Models\ContactRequest::class)->make();
 
 		$this->dbContactRepository->save($expectedContact->toArray());
 

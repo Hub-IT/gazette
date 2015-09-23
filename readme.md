@@ -1,4 +1,4 @@
-# Gazzete Web App
+# Gazette Web App
 
 ## Installation
 - [BowerPHP][bower_php_link]
@@ -13,25 +13,25 @@
 
 ## Developers
 ### Tests
-Gazzete Web App is build the TDD way. We first write functional tests, then integration tests, and where needed unit tests.
+Gazette Web App is build the TDD way. We first write functional tests, then integration tests, and where needed unit tests.
 #### Database 
 > Use a separate database for tests.  
 
 ##### Useful commands for psql
 - Login to psql: `psql -U homestead -h localhost` # password: secret
 - List all databases `\l`
-- Create database for app `CREATE DATABASE gazzete`
-- Create database for tests `CREATE DATABASE gazzete_testing` > REQUIRED!
-- Select database `\c gazzete`
+- Create database for app `CREATE DATABASE gazette`
+- Create database for tests `CREATE DATABASE gazette_testing` > REQUIRED!
+- Select database `\c gazette`
 - List all tables on the selected database `\dt`
-- `create gazzete database` && `create gazzete_testing database`
+- `create gazette database` && `create gazette_testing database`
 #### TODO
 - Use [selenium][selenium_link] for front-end testing:
 	- Verify a user can read more posts either through the infinite scroll for small screens or manually for big screens.
 
 
 ### License
- - The Gazzete App is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+ - The Gazette App is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 ### Credits
 - html5shiv

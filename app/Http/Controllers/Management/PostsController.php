@@ -6,10 +6,10 @@
  */
 namespace App\Http\Controllers\Management;
 
-use App\Gazzete\Models\Post;
-use App\Gazzete\Models\Role;
-use App\Gazzete\Repositories\Category\CategoryRepository;
-use App\Gazzete\Repositories\Post\PostRepository;
+use App\Gazette\Models\Post;
+use App\Gazette\Models\Role;
+use App\Gazette\Repositories\Category\CategoryRepository;
+use App\Gazette\Repositories\Post\PostRepository;
 use App\Http\Requests;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -138,6 +138,29 @@ class PostsController extends BaseController
 	 */
 	public function update(Requests\UpdatePostRequest $updatePostRequest, Post $post)
 	{
+		$user = Auth::user();
+
+		if ( $user->hasRole(Role::ADMINISTRATOR) || $user->hasRole(Role::EDITOR)
+			|| ($user->hasRole(Role::AUTHOR) && $post->author->id === $user->id)
+			|| ($user->hasRole(Role::CONTRIBUTOR) && $post->author->id === $user->id && ! $post->published)
+		)
+		{
+			if ( $this->postRepository->destroyById($post->id) )
+			{
+				Flash::success('Post successfully deleted.');
+
+				return redirect()->route('management.posts.index');
+			}
+
+			Flash::error('Something went wrong.');
+		} else
+		{
+			Flash::error('You do not have the necessary privileges to delete a post.');
+
+			return redirect()->back();
+		}
+
+		return redirect()->back();
 
 	}
 }

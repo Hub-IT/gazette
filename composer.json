@@ -28,7 +28,7 @@
 			"App\\": "app/"
 		},
 		"files": [
-			"app/Gazzete/helpers.php"
+			"app/Gazette/helpers.php"
 		]
 	},
 	"autoload-dev": {

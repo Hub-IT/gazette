@@ -18,7 +18,7 @@ class MasterLayoutTest extends TestCase
 		$this->visit(route('home'))
 			->seePageIs(route('home'))
 			->see('<span class="menu-trigger animated fadeInDown"')
-			->see('Gazzete')
+			->see('Gazette')
 			->see('DEREE News. 24/7.')
 			->see('Latest story.')
 			->see('Subtitle')

@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Str;
 
-$factory->define(App\Gazzete\Models\User::class, function (Faker\Generator $faker)
+$factory->define(App\Gazette\Models\User::class, function (Faker\Generator $faker)
 {
 	$name = $faker->name;
 
@@ -12,62 +12,62 @@ $factory->define(App\Gazzete\Models\User::class, function (Faker\Generator $fake
 		'remember_token' => str_random(10),
 		'avatar'         => $faker->imageUrl(50, 50),
 		'slug'           => Str::slug($name),
-		'role_id'        => factory(App\Gazzete\Models\Role::class)->create()->id,
+		'role_id'        => factory(App\Gazette\Models\Role::class)->create()->id,
 	];
 });
 
-$factory->defineAs(App\Gazzete\Models\User::class, 'user_administrator', function ($faker) use ($factory)
+$factory->defineAs(App\Gazette\Models\User::class, 'user_administrator', function ($faker) use ($factory)
 {
-	$user = $factory->raw(App\Gazzete\Models\User::class);
-	$author = ['role_id' => \App\Gazzete\Models\Role::administrator()->id];
+	$user = $factory->raw(App\Gazette\Models\User::class);
+	$author = ['role_id' => \App\Gazette\Models\Role::administrator()->id];
 
 	return array_merge($user, $author);
 });
 
-$factory->defineAs(App\Gazzete\Models\User::class, 'user_author', function ($faker) use ($factory)
+$factory->defineAs(App\Gazette\Models\User::class, 'user_author', function ($faker) use ($factory)
 {
-	$user = $factory->raw(App\Gazzete\Models\User::class);
-	$author = ['role_id' => \App\Gazzete\Models\Role::author()->id];
+	$user = $factory->raw(App\Gazette\Models\User::class);
+	$author = ['role_id' => \App\Gazette\Models\Role::author()->id];
 
 	return array_merge($user, $author);
 });
 
-$factory->defineAs(App\Gazzete\Models\User::class, 'user_editor', function ($faker) use ($factory)
+$factory->defineAs(App\Gazette\Models\User::class, 'user_editor', function ($faker) use ($factory)
 {
-	$user = $factory->raw(App\Gazzete\Models\User::class);
-	$author = ['role_id' => \App\Gazzete\Models\Role::editor()->id];
+	$user = $factory->raw(App\Gazette\Models\User::class);
+	$author = ['role_id' => \App\Gazette\Models\Role::editor()->id];
 
 	return array_merge($user, $author);
 });
 
-$factory->defineAs(App\Gazzete\Models\User::class, 'user_contributor', function ($faker) use ($factory)
+$factory->defineAs(App\Gazette\Models\User::class, 'user_contributor', function ($faker) use ($factory)
 {
-	$user = $factory->raw(App\Gazzete\Models\User::class);
-	$author = ['role_id' => \App\Gazzete\Models\Role::contributor()->id];
+	$user = $factory->raw(App\Gazette\Models\User::class);
+	$author = ['role_id' => \App\Gazette\Models\Role::contributor()->id];
 
 	return array_merge($user, $author);
 });
 
-$factory->defineAs(App\Gazzete\Models\User::class, 'user_subscriber', function ($faker) use ($factory)
+$factory->defineAs(App\Gazette\Models\User::class, 'user_subscriber', function ($faker) use ($factory)
 {
-	$user = $factory->raw(App\Gazzete\Models\User::class);
-	$author = ['role_id' => \App\Gazzete\Models\Role::subscriber()->id];
+	$user = $factory->raw(App\Gazette\Models\User::class);
+	$author = ['role_id' => \App\Gazette\Models\Role::subscriber()->id];
 
 	return array_merge($user, $author);
 });
 
 
-$factory->define(App\Gazzete\Models\Role::class, function (Faker\Generator $faker)
+$factory->define(App\Gazette\Models\Role::class, function (Faker\Generator $faker)
 {
 	return [
 		'name' => $faker->name,
 	];
 });
 
-$factory->define(App\Gazzete\Models\Post::class, function ($faker) use ($factory)
+$factory->define(App\Gazette\Models\Post::class, function ($faker) use ($factory)
 {
-	$category = factory(App\Gazzete\Models\Category::class)->create();
-	$author = factory(App\Gazzete\Models\User::class, 'user_author')->create();
+	$category = factory(App\Gazette\Models\Category::class)->create();
+	$author = factory(App\Gazette\Models\User::class, 'user_author')->create();
 	$title = $faker->name;
 	$content = "<p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p><p>" . $faker->paragraph() . "</p>";
 
@@ -84,7 +84,7 @@ $factory->define(App\Gazzete\Models\Post::class, function ($faker) use ($factory
 	];
 });
 
-$factory->define(App\Gazzete\Models\Category::class, function (Faker\Generator $faker)
+$factory->define(App\Gazette\Models\Category::class, function (Faker\Generator $faker)
 {
 	$name = $faker->name;
 
@@ -95,7 +95,7 @@ $factory->define(App\Gazzete\Models\Category::class, function (Faker\Generator $
 	];
 });
 
-$factory->define(App\Gazzete\Models\ContactRequest::class, function (Faker\Generator $faker)
+$factory->define(App\Gazette\Models\ContactRequest::class, function (Faker\Generator $faker)
 {
 	return [
 		'name'         => $faker->name,

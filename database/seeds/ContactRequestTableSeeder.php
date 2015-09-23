@@ -11,6 +11,6 @@ class ContactRequestTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		factory(\App\Gazzete\Models\ContactRequest::class, 3)->create();
+		factory(\App\Gazette\Models\ContactRequest::class, 3)->create();
 	}
 }

@@ -6,9 +6,9 @@
 
 namespace tests\functional\management\author;
 
-use App\Gazzete\Models\Post;
-use App\Gazzete\Models\Role;
-use App\Gazzete\Models\User;
+use App\Gazette\Models\Post;
+use App\Gazette\Models\Role;
+use App\Gazette\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -55,7 +55,7 @@ class PostsTest extends TestCase
 			->visit(route('management.home'))
 			->click('posts-create')
 			->seePageIs(route('management.posts.create'))
-			->see('<title>Create Post &middot; Gazzete CMS</title>')
+			->see('<title>Create Post &middot; Gazette CMS</title>')
 			->see('Meta')
 			->see('<label for="title">Title</label>')
 			->see('<input class="form-control" placeholder="Required" name="title" type="text" id="title">')
@@ -81,7 +81,7 @@ class PostsTest extends TestCase
 
 		$this->actingAs($author)
 			->visit(route('management.posts.edit', $post->slug))
-			->see('<title>Edit Post &middot; Gazzete CMS</title>')
+			->see('<title>Edit Post &middot; Gazette CMS</title>')
 			->see('Meta')
 			->see($post->title)
 			->see($post->summary)

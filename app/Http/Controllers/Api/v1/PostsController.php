@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Gazzete\Models\Post;
-use App\Gazzete\Repositories\Post\PostRepository;
-use App\Gazzete\Transformers\PostTransformer;
+use App\Gazette\Models\Post;
+use App\Gazette\Repositories\Post\PostRepository;
+use App\Gazette\Transformers\PostTransformer;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests;
 use Illuminate\Http\Request;

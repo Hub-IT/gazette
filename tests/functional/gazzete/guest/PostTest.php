@@ -15,11 +15,11 @@ class PostTest extends TestCase
 	/** @test */
 	public function it_reads_post()
 	{
-		$post = factory(App\Gazzete\Models\Post::class)->create();
+		$post = factory(App\Gazette\Models\Post::class)->create();
 
 		$this->visit(route('posts.show', $post->slug))
 			->seePageIs(route('posts.show', $post->slug))->see('POSTS')
-			->see('<title>' . $post->title . ' &middot; Gazzete</title>')
+			->see('<title>' . $post->title . ' &middot; Gazette</title>')
 			->see($post->author->name)
 			->see($post->category->name)
 			->see($post->minutes_read)
@@ -33,7 +33,7 @@ class PostTest extends TestCase
 	/** @test */
 	public function it_reads_categories()
 	{
-		$categories = factory(App\Gazzete\Models\Category::class, 3)->create();
+		$categories = factory(App\Gazette\Models\Category::class, 3)->create();
 
 		$this->visit(route('home'))
 			->seePageIs(route('home'))

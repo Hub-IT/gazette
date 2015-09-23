@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Gazette\Models\Role;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Laracasts\Flash\Flash;
@@ -38,9 +39,16 @@ class AuthenticateManagement
 		{
 			if ( $request->ajax() ) return response('Unauthorized.', 401);
 
-			Flash::error('Authorization required.');
+			Flash::error('Authentication required.');
 
 			return redirect()->guest(route('management.auth.create'));
+		}
+
+		if ( $this->auth->user()->hasRole(Role::SUBSCRIBER) )
+		{
+			Flash::error('You do not have the necessary authorization.');
+
+			return redirect()->guest(route('home'));
 		}
 
 		return $next($request);

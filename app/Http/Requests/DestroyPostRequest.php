@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Gazzete\Models\Role;
+use App\Gazette\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 

@@ -6,8 +6,8 @@
 
 namespace tests\functional\management\contributor;
 
-use App\Gazzete\Models\Post;
-use App\Gazzete\Models\User;
+use App\Gazette\Models\Post;
+use App\Gazette\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -66,7 +66,7 @@ class PostsTest extends TestCase
 
 		$this->actingAs($contributor)
 			->visit(route('management.posts.edit', $post->slug))
-			->see('<title>Edit Post &middot; Gazzete CMS</title>')
+			->see('<title>Edit Post &middot; Gazette CMS</title>')
 			->see('Meta')
 			->see($post->title)
 			->see($post->summary)

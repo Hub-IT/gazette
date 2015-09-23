@@ -8,7 +8,7 @@ Homestead.json
 # PHPStorm
 /.idea
 
-# Gazzete
+# Gazette
 /public/vendor/
 
 # Developer

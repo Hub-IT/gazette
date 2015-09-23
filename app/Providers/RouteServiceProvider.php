@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Gazzete\Models\Post;
+use App\Gazette\Models\Post;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
 

@@ -1,6 +1,6 @@
 <?php
 
-get('/', ['as' => 'home', 'uses' => 'Gazzete\GazzeteController@home']);
+get('/', ['as' => 'home', 'uses' => 'Gazette\GazetteController@home']);
 
 Route::group(['prefix' => 'api'], function ()
 {
@@ -10,14 +10,19 @@ Route::group(['prefix' => 'api'], function ()
 	});
 });
 
-Route::resource('posts', 'Gazzete\PostsController', ['only' => 'show']);
-Route::resource('authors', 'Gazzete\AuthorsController', ['only' => 'show']);
-Route::resource('categories', 'Gazzete\CategoriesController', ['only' => 'show']);
+Route::resource('posts', 'Gazette\PostsController', ['only' => 'show']);
+Route::resource('authors', 'Gazette\AuthorsController', ['only' => 'show']);
+Route::resource('categories', 'Gazette\CategoriesController', ['only' => 'show']);
 
-get('about', ['as' => 'about', 'uses' => 'Gazzete\GazzeteController@about']);
-get('contact', ['as' => 'contact', 'uses' => 'Gazzete\GazzeteController@contact']);
-post('contact', ['as' => 'contact.post', 'uses' => 'Gazzete\GazzeteController@postContact']);
+get('about', ['as' => 'about', 'uses' => 'Gazette\GazetteController@about']);
+get('contact', ['as' => 'contact', 'uses' => 'Gazette\GazetteController@contact']);
+post('contact', ['as' => 'contact.post', 'uses' => 'Gazette\GazetteController@postContact']);
 
+# Errors
+get('404', ['as' => 'gazette.errors.404', 'uses' => 'Management\ErrorsController@notFound']);
+get('unauthorized', ['as' => 'gazette.errors.unauthorized', 'uses' => 'Gazette\ErrorsController@unauthorized']);
+
+# Management System
 Route::group(['prefix' => 'management'], function ()
 {
 	get('dashboard', ['as' => 'management.home', 'uses' => 'Management\DashboardController@home']);
@@ -26,4 +31,8 @@ Route::group(['prefix' => 'management'], function ()
 
 	get('auth', ['as' => 'management.auth.create', 'uses' => 'Management\Auth\AuthController@getLogin']);
 	post('auth', ['as' => 'management.auth.store', 'uses' => 'Management\Auth\AuthController@postLogin']);
+
+	# Errors
+	get('404', ['as' => 'management.errors.404', 'uses' => 'Management\ErrorsController@notFound']);
+	get('unauthorized', ['as' => 'management.errors.unauthorized', 'uses' => 'Management\ErrorsController@unauthorized']);
 });

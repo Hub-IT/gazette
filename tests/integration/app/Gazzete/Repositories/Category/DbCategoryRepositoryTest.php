@@ -4,9 +4,9 @@
  * @since   19/9/2015
  */
 
-namespace tests\integration\app\Gazzete\Repositories\Category;
+namespace tests\integration\app\Gazette\Repositories\Category;
 
-use App\Gazzete\Repositories\Category\DbCategoryRepository;
+use App\Gazette\Repositories\Category\DbCategoryRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use TestCase;
 
@@ -27,7 +27,7 @@ class DbCategoryRepositoryTest extends TestCase
 	/** @test */
 	public function it_returns_all()
 	{
-		$expectedCategories = factory(\App\Gazzete\Models\Category::class, 2)->create();
+		$expectedCategories = factory(\App\Gazette\Models\Category::class, 2)->create();
 
 		$actualCategories = $this->dbCategoryRepository->all();
 
