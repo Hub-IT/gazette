@@ -1,8 +1,11 @@
-# Gazette Web App
+## Gazette Web App  
+
+[![Build Status](https://travis-ci.org/Hub-IT/gazette.svg?branch=master)](https://travis-ci.org/Hub-IT/gazette)
+[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
 ## Installation
 - [BowerPHP][bower_php_link]
-- [Composer][composer_link]. Install back-end libraries.
+- [Composer][composer_link]
 
 ## Summary of Roles
 - Administrator – somebody who has access to all features of below roles, as well editing account users.
@@ -44,5 +47,5 @@ Gazette Web App is build the TDD way. We first write functional tests, then inte
 - Laravel
 
 [bower_php_link]: https://github.com/Bee-Lab/bowerphp
-[Composer]: https://getcomposer.org/
+[composer_link]: https://getcomposer.org/
 [selenium_link]: http://www.seleniumhq.org/
