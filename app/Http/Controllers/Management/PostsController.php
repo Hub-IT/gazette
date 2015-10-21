@@ -15,8 +15,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 
-class PostsController extends BaseController
-{
+class PostsController extends BaseController {
 	protected $postRepository;
 
 	protected $categoryRepository;
@@ -145,22 +144,15 @@ class PostsController extends BaseController
 			|| ($user->hasRole(Role::CONTRIBUTOR) && $post->author->id === $user->id && ! $post->published)
 		)
 		{
-			if ( $this->postRepository->destroyById($post->id) )
-			{
-				Flash::success('Post successfully deleted.');
+			Flash::success('Post updated.');
 
-				return redirect()->route('management.posts.index');
-			}
+			return redirect()->route('management.posts.index');
 
-			Flash::error('Something went wrong.');
 		} else
 		{
-			Flash::error('You do not have the necessary privileges to delete a post.');
-
-			return redirect()->back();
+			Flash::error('You do not have the necessary privileges to update a post.');
 		}
 
 		return redirect()->back();
-
 	}
 }

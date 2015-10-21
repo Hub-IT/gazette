@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Gazzete;
+namespace App\Http\Controllers\Gazette;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;

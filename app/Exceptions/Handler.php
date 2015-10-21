@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class Handler extends ExceptionHandler
-{
+class Handler extends ExceptionHandler {
 	/**
 	 * A list of the exception types that should not be reported.
 	 *
@@ -46,7 +45,7 @@ class Handler extends ExceptionHandler
 	public function render($request, Exception $e)
 	{
 		# Gazzete Errors
-		if ( ! Auth::check() || Auth::user()->hasRole(Role::SUBSCRIBER) )
+		if ( Auth::check() && Auth::user()->hasRole(Role::SUBSCRIBER) )
 		{
 			if ( $e instanceof NotFoundHttpException ) return redirect()->route('gazette.errors.404');
 
@@ -54,11 +53,14 @@ class Handler extends ExceptionHandler
 		}
 
 		# Management Errors
-		if ( $e instanceof NotFoundHttpException ) return redirect()->route('management.errors.404');
+		if ( Auth::check() && (Auth::user()->hasRole(Role::ADMINISTRATOR)) )
+		{
+			if ( $e instanceof NotFoundHttpException ) return redirect()->route('management.errors.404');
 
-		if ( $e instanceof TokenMismatchException ) return redirect()->route('management.errors.unauthorized');
+			if ( $e instanceof TokenMismatchException ) return redirect()->route('management.errors.unauthorized');
 
-		if ( $e instanceof ModelNotFoundException ) $e = new NotFoundHttpException($e->getMessage(), $e);
+			if ( $e instanceof ModelNotFoundException ) $e = new NotFoundHttpException($e->getMessage(), $e);
+		}
 
 		return parent::render($request, $e);
 	}

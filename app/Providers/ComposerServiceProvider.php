@@ -13,9 +13,7 @@ class ComposerServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		view()->composer(
-			'management.layouts.master',
-			'App\Http\ViewComposers\MasterComposer');
+		view()->composer('management.layouts.master', 'App\Http\ViewComposers\Management\MasterComposer');
 	}
 
 	/**

@@ -18,10 +18,6 @@ get('about', ['as' => 'about', 'uses' => 'Gazette\GazetteController@about']);
 get('contact', ['as' => 'contact', 'uses' => 'Gazette\GazetteController@contact']);
 post('contact', ['as' => 'contact.post', 'uses' => 'Gazette\GazetteController@postContact']);
 
-# Errors
-get('404', ['as' => 'gazette.errors.404', 'uses' => 'Management\ErrorsController@notFound']);
-get('unauthorized', ['as' => 'gazette.errors.unauthorized', 'uses' => 'Gazette\ErrorsController@unauthorized']);
-
 # Management System
 Route::group(['prefix' => 'management'], function ()
 {
@@ -36,3 +32,7 @@ Route::group(['prefix' => 'management'], function ()
 	get('404', ['as' => 'management.errors.404', 'uses' => 'Management\ErrorsController@notFound']);
 	get('unauthorized', ['as' => 'management.errors.unauthorized', 'uses' => 'Management\ErrorsController@unauthorized']);
 });
+
+# Errors
+get('404', ['as' => 'gazette.errors.404', 'uses' => 'Gazzete\ErrorsController@notFound']);
+get('unauthorized', ['as' => 'gazette.errors.unauthorized', 'uses' => 'Gazette\ErrorsController@unauthorized']);

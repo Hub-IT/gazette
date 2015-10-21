@@ -7,9 +7,10 @@
     <meta name="description" content="Unofficial CMS for DEREE Gazette">
     <meta name="viewport" content="width=device-width">
 
-    <link href='{!! asset("gazette/favicon.ico") !!}' rel="icon">
+    <link href='{!! url("gazette/favicon.ico") !!}' rel="icon">
     <link href='{!! url("vendor/bootstrap/dist/css/bootstrap.min.css") !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url("vendor/fontawesome/css/font-awesome.min.css") !!}' rel='stylesheet' type='text/css'/>
+    <link href='{!! url("vendor/pnotify/src/pnotify.core.css") !!}' rel='stylesheet' type='text/css'/>
     @yield('styles')
     <link href='{!! url('gazette/css/main.css') !!}' rel='stylesheet' type='text/css'/>
     <link href='{!! url('gazette/css/app.css') !!}' rel='stylesheet' type='text/css'/>
@@ -27,6 +28,8 @@
 <script src='{!! url("vendor/bootstrap/dist/js/bootstrap.min.js") !!}'></script>
 <script src='{!! url("vendor/jpanelmenu/jquery.jpanelmenu-legacy.js") !!}'></script>
 <script src='{!! url("vendor/fastclick/lib/fastclick.js") !!}'></script>
+<script src='{!! url("vendor/pnotify/src/pnotify.core.min.js") !!}'></script>
+<script src='{!! url("vendor/pnotify/src/pnotify.confirm.min.js") !!}'></script>
 <script src='{!! url("gazette/js/main.js") !!}'></script>
 @yield('scripts')
 @include('flash::pnotify')

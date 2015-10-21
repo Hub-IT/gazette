@@ -2,6 +2,7 @@
 @section('title', 'Home')
 @section('styles') @endsection
 @section('content')
+
 <main class="container left-container">
 
     @include('gazette.home._sidebar')
